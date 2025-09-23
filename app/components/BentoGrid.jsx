@@ -107,7 +107,7 @@ export const BentoGridItem = ({
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <span className="text-xs text-neutral-500 dark:text-neutral-400">Your photo</span>
+                  <span className="text-xs text-neutral-500 dark:text-neutral-400"></span>
                 )}
               </div>
             </div>

@@ -80,7 +80,7 @@ export const projects = [
       '/stream.svg',
       '/c.svg',
     ],
-    link: 'https://github.com/adrianhajdin/zoom-clone',
+    link: '',
   },
   {
     id: 3,
@@ -94,7 +94,7 @@ export const projects = [
       '/three.svg',
       '/c.svg',
     ],
-    link: 'https://github.com/adrianhajdin/ai_saas_app',
+    link: '',
   },
 ];
 
