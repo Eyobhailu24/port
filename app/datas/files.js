@@ -57,8 +57,8 @@ export const projects = [
   {
     id: 1,
     title: 'The Wild Oasis Website',
-    des: 'Wild Oasis Cabin Booking offers a seamless way to find and reserve cozy cabins surrounded by nature. Explore stunning locations, check availability, and book your perfect getaway with ease.',
-    img: '/wild project.png',
+    des: 'The Wild Oasis is a sleek, modern website demo, showcasing luxury cabins and guest areas in a scenic setting. It’s built using Next.js, with authentication handled by NextAuth, providing both immediate performance and robust user flow. The site gives a sense of immersive visuals and smooth UX, suggesting a focus on both aesthetics and function.',
+    img: '/wild.jpg',
     iconLists: [
       '/re.svg',
       '/tail.svg',
@@ -70,9 +70,9 @@ export const projects = [
   },
   {
     id: 2,
-    title: 'Smart Parking System',
-    des: 'Smart Parking System simplifies urban parking by helping users find available spots in real-time. Reserve, navigate, and manage parking effortlessly, saving time and reducing stress.',
-    img: '/p2.svg',
+    title: 'Atomic Blog',
+    des: 'The Atomic Blog is a modern, fast, and responsive blogging platform built with React. Leveraging the Context API for clean global-state management, it provides smooth client-side navigation, efficient rendering of content, and a polished UX.',
+    img: '/ablog.jpg',
     iconLists: [
       '/next.svg',
       '/tail.svg',
@@ -80,13 +80,13 @@ export const projects = [
       '/stream.svg',
       '/c.svg',
     ],
-    link: '',
+    link: 'https://atomic-blog-peach-seven.vercel.app/',
   },
   {
     id: 3,
     title: 'Flash Delivery',
     des: 'Flash Food Delivery brings your favorite meals to your doorstep quickly and reliably. Browse local restaurants, place orders in seconds, and enjoy fast, contactless delivery.',
-    img: '/p3.svg',
+    img: '/flash.jpg',
     iconLists: [
       '/re.svg',
       '/tail.svg',
