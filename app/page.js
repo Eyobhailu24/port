@@ -15,7 +15,7 @@ export default function Page() {
       <div className="max-w-7xl w-full">
         <FloatingNav
           navItems={[
-            { name: 'Home', link: '/', icon: <FaHome /> },
+            { name: 'Home', href: '#Home', icon: <FaHome /> },
           ]}
         />
         <Home />

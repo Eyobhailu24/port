@@ -16,6 +16,9 @@ export const metadata = {
   title: "Eyob's Portfolio",
   description:
     'Portfolio of Eyob H, MERN stack developer specializing in full-stack web apps.',
+  icons: {
+    icon: '/Portfolio.jpg',
+  },
 };
 
 export default function RootLayout({ children }) {
