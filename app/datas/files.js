@@ -43,12 +43,12 @@ export const gridItems = [
     titleClassName: '',
     spareImg: '',
     skills: [
-      { name: 'JavaScript', level: 87 },
-      { name: 'React.js', level: 84 },
-      { name: 'Node.js', level: 83 },
-      { name: 'HTML / CSS / Tailwind', level: 80 },
-      { name: 'Next.js', level: 75 },
-      { name: 'Flutter', level: 63 },
+      { name: 'HTML / CSS / JavaScript', level: 89 },
+      { name: 'React.js', level: 88 },
+      { name: 'Node.js', level: 86 },
+      { name: 'Next.js', level: 85 },
+      { name: 'TailWind', level: 83 },
+      { name: 'Flutter', level: 75 },
     ],
   },
 ];

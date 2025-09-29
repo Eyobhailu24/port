@@ -4,6 +4,7 @@ import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 
 const TO_EMAIL = 'EyobHailu246@gmail.com'
+const PHONE = '+251 968 475 774';
 
 function ContactGrid() {
   const form = useRef();
@@ -92,10 +93,10 @@ function ContactGrid() {
                 Phone
               </div>
               <a
-                href="tel:+251900000000"
+                href={`tel:${PHONE.replace(/[^+\d]/g, '')}`}
                 className="text-zinc-100 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 transition-all duration-300 ease-in-out text-base md:text-lg"
               >
-                +251 968 475 774
+                {PHONE}
               </a>
             </div>
             <div>
