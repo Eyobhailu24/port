@@ -56,6 +56,20 @@ export const gridItems = [
 export const projects = [
   {
     id: 1,
+    title: 'Flash Delivery',
+    des: 'Flash Food Delivery brings your favorite meals to your doorstep quickly and reliably. Browse local restaurants, place orders in seconds, and enjoy fast, contactless delivery.',
+    img: '/flash.jpg',
+    iconLists: [
+      '/re.svg',
+      '/tail.svg',
+      '/ts.svg',
+      '/three.svg',
+      '/c.svg',
+    ],
+    link: 'https://flash-delivery.onrender.com/',
+  },
+  {
+    id: 2,
     title: 'The Wild Oasis Website',
     des: 'The Wild Oasis is a sleek, modern website demo, showcasing luxury cabins and guest areas in a scenic setting. It’s built using Next.js, with authentication handled by NextAuth, providing both immediate performance and robust user flow. The site gives a sense of immersive visuals and smooth UX, suggesting a focus on both aesthetics and function.',
     img: '/wild.jpg',
@@ -69,7 +83,7 @@ export const projects = [
     link: 'https://the-wild-oasis-website-demo-roan.vercel.app/',
   },
   {
-    id: 2,
+    id: 3,
     title: 'Atomic Blog',
     des: 'The Atomic Blog is a modern, fast, and responsive blogging platform built with React. Leveraging the Context API for clean global-state management, it provides smooth client-side navigation, efficient rendering of content, and a polished UX.',
     img: '/ablog.jpg',
@@ -81,20 +95,6 @@ export const projects = [
       '/c.svg',
     ],
     link: 'https://atomic-blog-peach-seven.vercel.app/',
-  },
-  {
-    id: 3,
-    title: 'Flash Delivery',
-    des: 'Flash Food Delivery brings your favorite meals to your doorstep quickly and reliably. Browse local restaurants, place orders in seconds, and enjoy fast, contactless delivery.',
-    img: '/flash.jpg',
-    iconLists: [
-      '/re.svg',
-      '/tail.svg',
-      '/ts.svg',
-      '/three.svg',
-      '/c.svg',
-    ],
-    link: 'https://flash-delivery.onrender.com/',
   },
 ];
 
