@@ -7,30 +7,28 @@ import { Spotlight } from './Spotlight';
 import { TextGenerateEffect } from './TextGenerateEffect';
 
 function handleClick() {
-  
-    const link = document.createElement('a');
-    link.href = '/Eyob CV.pdf'; // path is relative to public folder
-    link.download = 'Eyob CV.pdf'; // filename for download
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  
+  const link = document.createElement('a');
+  link.href = '/Eyob CV.pdf'; // path is relative to public folder
+  link.download = 'Eyob CV.pdf'; // filename for download
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
 function Home() {
   return (
-    <div id='Home' className="pb-20 pt-36">
+    <div id="Home" className="pb-20 pt-36">
       <div>
         <Spotlight
-          className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
+          className="-top-40 -left-20 md:-left-32 md:-top-20 h-screen"
           fill="purple"
         />
         <Spotlight
-          className="top-10 left-full h-[80vh] w-[50vw]"
+          className="top-10 left-[70%] h-[80vh] w-[50vw]"
           fill="blue"
         />
         <Spotlight
-          className="top-28 left-80 h-[80vh] w-[50vw]"
+          className="top-39 left-20 h-[80vh] w-[50vw] md:-left-32 md:-top-20"
           fill="white"
         />
       </div>
