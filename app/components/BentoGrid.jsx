@@ -68,7 +68,7 @@ export const BentoGridItem = ({
       style={{ transitionDelay: visible ? `${delay}ms` : '0ms' }}
     >
       {/* Clean, neutral card body (no lighting/gradient borders) */}
-      <div className="relative z-10 h-full w-full rounded-2xl bg-white dark:bg-black-100 border border-neutral-200/70 dark:border-white/10 shadow-sm overflow-hidden">
+      <div className="relative z-10 h-full w-full rounded-2xl bg-black dark:bg-black-100 border border-white/10 dark:border-white/10 shadow-sm overflow-hidden">
         {/* Optional subtle watermark image (kept very low opacity, not a light effect) */}
         {spareImg && (
           <img
