@@ -2,6 +2,7 @@
 
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import { FaEnvelope, FaPhone, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const TO_EMAIL = 'EyobHailu246@gmail.com'
 const PHONE = '+251 968 475 774';
@@ -78,51 +79,47 @@ function ContactGrid() {
 
           <div className="space-y-4">
             <div>
-              <div className="text-sm md:text-base text-zinc-400">
-                Email
-              </div>
               <a
                 href={`mailto:${TO_EMAIL}`}
-                className="text-zinc-100 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 transition-all duration-300 ease-in-out break-all text-base md:text-lg"
+                aria-label="Email"
+                title="Email"
+                className="inline-flex gap-2 items-center text-zinc-100 hover:text-purple-400 transition-colors duration-200"
               >
-                {TO_EMAIL}
+                <FaEnvelope size={24} />   <span>Email</span>
               </a>
             </div>
             <div>
-              <div className="text-sm md:text-base text-zinc-400">
-                Phone
-              </div>
               <a
                 href={`tel:${PHONE.replace(/[^+\d]/g, '')}`}
-                className="text-zinc-100 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 transition-all duration-300 ease-in-out text-base md:text-lg"
+                aria-label="Phone"
+                title="Phone"
+                className="inline-flex gap-2 items-center text-zinc-100 hover:text-purple-400 transition-colors duration-200"
               >
-                {PHONE}
+                <FaPhone size={24} /> <span>Phone</span>
               </a>
             </div>
             <div>
-              <div className="text-sm md:text-base text-zinc-400">
-                GitHub
-              </div>
               <a
                 href="https://github.com/Eyobhailu24"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-100 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 transition-all duration-300 ease-in-out text-base md:text-lg"
+                aria-label="GitHub"
+                title="GitHub"
+                className="inline-flex gap-2 items-center text-zinc-100 hover:text-purple-400 transition-colors duration-200"
               >
-                Eyobhailu24
+                <FaGithub size={24} /> <span>GitHub</span>
               </a>
             </div>
             <div>
-              <div className="text-sm md:text-base text-zinc-400">
-                LinkedIn
-              </div>
               <a
                 href="https://www.linkedin.com/in/eyob-hailu-58b240202/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-100 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 transition-all duration-300 ease-in-out text-base md:text-lg"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+                className="inline-flex gap-2 text-zinc-100 hover:text-purple-400 transition-colors duration-200"
               >
-                Eyob Hailu
+                <FaLinkedin size={24} /> {"    "}<span> linkedIn</span>
               </a>
             </div>
             <div>

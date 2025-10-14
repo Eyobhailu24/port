@@ -15,7 +15,7 @@ export const gridItems = [
     imgClassName: '',
     titleClassName: '',
     spareImg: '',
-    avatarSrc: '', // set to your image path to display a real photo
+    avatarSrc: '/finalcv.jpg', // set to your image path to display a real photo
     info: {
       name: 'Eyob Hailu',
       location: 'Addis Ababa, Ethiopia',
@@ -57,7 +57,7 @@ export const projects = [
   {
     id: 1,
     title: 'Flash Delivery',
-    des: 'Flash Food Delivery brings your favorite meals to your doorstep quickly and reliably. Browse local restaurants, place orders in seconds, and enjoy fast, contactless delivery.',
+    des: 'A full-stack food delivery web application that allows users to browse restaurants, place food orders, and track their deliveries in real time. The platform includes separate interfaces for customers, restaurant managers, and delivery drivers, with order management, payment integration, and live order status updates. Tech Stack: React.js, Node.js, Express.js, MongoDB, Socket.io, and Tailwind CSS.',
     img: '/flash.jpg',
     iconLists: [
       '/re.svg',

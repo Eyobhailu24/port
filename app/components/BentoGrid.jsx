@@ -99,7 +99,7 @@ export const BentoGridItem = ({
           {/* Custom content blocks */}
           {typeof avatarSrc !== 'undefined' && (
             <div className="mt-4 flex flex-1 items-center justify-center">
-              <div className="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border border-white/10 dark:border-white/10 bg-white/5 dark:bg-white/5 flex items-center justify-center">
+              <div className="w-50 h-50 md:w-50 md:h-50 rounded-full overflow-hidden border border-white/10 dark:border-white/10 bg-white/5 dark:bg-white/5 flex items-center justify-center">
                 {avatarSrc ? (
                   <img
                     src={avatarSrc}

@@ -1,6 +1,12 @@
-"use client"
+'use client';
 
 import React from 'react';
+import {
+  FaEnvelope,
+  FaPhone,
+  FaGithub,
+  FaLinkedin,
+} from 'react-icons/fa';
 
 const TO_EMAIL = 'EyobHailu246@gmail.com'; // update to your real email
 const PHONE = '+251 968 475 774';
@@ -87,60 +93,50 @@ export default function Footer() {
           <h4 className="font-semibold text-xl md:text-2xl mb-3 bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-purple-400 bg-clip-text text-transparent">
             Contact
           </h4>
-          <ul className="space-y-2 text-base md:text-lg">
+          <ul className="flex items-center gap-4 text-base md:text-lg">
             <li>
-              <span className="text-zinc-400 block">
-                Email
-              </span>
               <a
                 href={`mailto:${TO_EMAIL}`}
-                className="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 transition-all duration-300 ease-in-out break-all"
+                aria-label="Email"
+                title="Email"
+                className="inline-flex items-center text-zinc-100 hover:text-purple-400 transition-colors duration-200"
               >
-                {TO_EMAIL}
+                <FaEnvelope size={24} />
               </a>
             </li>
             <li>
-              <span className="text-zinc-400 block">
-                LinkedIn
-              </span>
               <a
                 href="https://www.linkedin.com/in/eyob-hailu-58b240202/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 transition-all duration-300 ease-in-out break-all"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+                className="inline-flex items-center text-zinc-100 hover:text-purple-400 transition-colors duration-200"
               >
-                Eyob Hailu
+                <FaLinkedin size={24} />
               </a>
             </li>
             <li>
-              <span className="text-zinc-400 block">
-                GitHub
-              </span>
               <a
                 href="https://github.com/Eyobhailu24"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 transition-all duration-300 ease-in-out break-all"
+                aria-label="GitHub"
+                title="GitHub"
+                className="inline-flex items-center text-zinc-100 hover:text-purple-400 transition-colors duration-200"
               >
-                Eyobhailu24
+                <FaGithub size={24} />
               </a>
             </li>
             <li>
-              <span className="text-zinc-400 block">
-                Phone
-              </span>
               <a
                 href={`tel:${PHONE.replace(/[^+\d]/g, '')}`}
-                className="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 transition-all duration-300 ease-in-out"
+                aria-label="Phone"
+                title="Phone"
+                className="inline-flex items-center text-zinc-100 hover:text-purple-400 transition-colors duration-200"
               >
-                {PHONE}
+                <FaPhone size={24} />
               </a>
-            </li>
-            <li>
-              <span className="text-zinc-400 block">
-                Location
-              </span>
-              <span>{LOCATION}</span>
             </li>
           </ul>
         </div>
