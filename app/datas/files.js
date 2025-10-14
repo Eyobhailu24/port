@@ -58,7 +58,7 @@ export const projects = [
     id: 1,
     title: 'Flash Delivery',
     des: 'A full-stack food delivery web application that allows users to browse restaurants, place food orders, and track their deliveries in real time. The platform includes separate interfaces for customers, restaurant managers, and delivery drivers, with order management, payment integration, and live order status updates. Tech Stack: React.js, Node.js, Express.js, MongoDB, Socket.io, and Tailwind CSS.',
-    img: '/flashdel.jpg',
+    img: '/flashde.jpg',
     iconLists: [
       '/re.svg',
       '/tail.svg',
