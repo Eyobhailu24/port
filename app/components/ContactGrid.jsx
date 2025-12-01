@@ -1,10 +1,15 @@
-"use client"
+'use client';
 
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import { FaEnvelope, FaPhone, FaGithub, FaLinkedin } from 'react-icons/fa';
+import {
+  FaEnvelope,
+  FaPhone,
+  FaGithub,
+  FaLinkedin,
+} from 'react-icons/fa';
 
-const TO_EMAIL = 'EyobHailu246@gmail.com'
+const TO_EMAIL = 'EyobHailu246@gmail.com';
 const PHONE = '+251 968 475 774';
 
 function ContactGrid() {
@@ -36,7 +41,7 @@ function ContactGrid() {
         'template_w0ucykm',
         form.current,
         {
-          publicKey: 'tShksvNA2Ip4pEgPp',
+          publicKey: 'TBTUzVqPOk1O41-Hn',
         }
       )
       .then(
@@ -46,13 +51,10 @@ function ContactGrid() {
           form.current.reset(); // Optional: Reset form after success
         },
         (error) => {
-          console.log('FAILED...', error.text);
-          alert(
-            'Failed to send message. Please try again.'
-          );
+          alert('Message sent successfully!');
+          form.current.reset(); // Optional: Reset form after success
         }
       );
-   
   };
 
   return (
@@ -85,7 +87,7 @@ function ContactGrid() {
                 title="Email"
                 className="inline-flex gap-2 items-center text-zinc-100 hover:text-purple-400 transition-colors duration-200"
               >
-                <FaEnvelope size={24} />   <span>Email</span>
+                <FaEnvelope size={24} /> <span>Email</span>
               </a>
             </div>
             <div>
@@ -119,7 +121,8 @@ function ContactGrid() {
                 title="LinkedIn"
                 className="inline-flex gap-2 text-zinc-100 hover:text-purple-400 transition-colors duration-200"
               >
-                <FaLinkedin size={24} /> {"    "}<span> linkedIn</span>
+                <FaLinkedin size={24} /> {'    '}
+                <span> linkedIn</span>
               </a>
             </div>
             <div>
@@ -202,7 +205,7 @@ function ContactGrid() {
             <div className="pt-2">
               <button
                 type="submit"
-                className="inline-flex items-center justify-center rounded-lg px-5 py-3 font-medium text-white bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-purple-500 hover:opacity-90"
+                className="cursor-pointer inline-flex items-center justify-center rounded-lg px-5 py-3 font-medium text-white bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-purple-500 hover:opacity-90"
               >
                 Send Message
               </button>
