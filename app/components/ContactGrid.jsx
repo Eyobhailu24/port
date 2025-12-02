@@ -1,21 +1,22 @@
 'use client';
 
 import React, { useRef } from 'react';
-import emailjs from '@emailjs/browser';
 import {
   FaEnvelope,
   FaPhone,
   FaGithub,
   FaLinkedin,
 } from 'react-icons/fa';
+import toast from 'react-hot-toast';
 
-const TO_EMAIL = 'EyobHailu246@gmail.com';
+const TO_EMAIL = 'eyobhailu246@gmail.com';
 const PHONE = '+251 968 475 774';
 
 function ContactGrid() {
   const form = useRef();
   const [visible, setVisible] = React.useState(false);
   const sectionRef = React.useRef(null);
+
   React.useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
@@ -32,29 +33,30 @@ function ContactGrid() {
     return () => obs.disconnect();
   }, []);
 
-  const handleSubmit = (e) => {
+  // 🔥 NEW: FormSubmit email sending (no backend, no API keys)
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
-        'service_xexervp',
-        'template_w0ucykm',
-        form.current,
+    const formData = new FormData(form.current);
+
+    try {
+      const res = await fetch(
+        'https://formsubmit.co/ajax/eyobhailu246@gmail.com',
         {
-          publicKey: 'TBTUzVqPOk1O41-Hn',
-        }
-      )
-      .then(
-        () => {
-          console.log('SUCCESS!');
-          alert('Message sent successfully!');
-          form.current.reset(); // Optional: Reset form after success
-        },
-        (error) => {
-          alert('Message sent successfully!');
-          form.current.reset(); // Optional: Reset form after success
+          method: 'POST',
+          body: formData,
         }
       );
+
+      if (res.ok) {
+        toast.success("Message sent successfully!");
+        form.current.reset();
+      } else {
+        toast.error("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      toast.error("Network error. Please try again.");
+    }
   };
 
   return (
@@ -121,8 +123,8 @@ function ContactGrid() {
                 title="LinkedIn"
                 className="inline-flex gap-2 text-zinc-100 hover:text-purple-400 transition-colors duration-200"
               >
-                <FaLinkedin size={24} /> {'    '}
-                <span> linkedIn</span>
+                <FaLinkedin size={24} />{' '}
+                <span>linkedIn</span>
               </a>
             </div>
             <div>
@@ -149,11 +151,23 @@ function ContactGrid() {
           <h3 className="text-2xl md:text-3xl font-semibold mb-4 bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-purple-400 bg-clip-text text-transparent">
             Send Message
           </h3>
+
           <form
             ref={form}
             onSubmit={handleSubmit}
             className="space-y-4"
           >
+            <input
+              type="hidden"
+              name="_captcha"
+              value="false"
+            />
+            <input
+              type="hidden"
+              name="_template"
+              value="table"
+            />
+
             <div>
               <label
                 htmlFor="fullName"
@@ -170,6 +184,7 @@ function ContactGrid() {
                 className="w-full bg-black border border-white/20 rounded-lg p-3 text-zinc-100 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-slate-700 text-base md:text-lg"
               />
             </div>
+
             <div>
               <label
                 htmlFor="email"
@@ -186,6 +201,7 @@ function ContactGrid() {
                 className="w-full bg-black border border-white/20 rounded-lg p-3 text-zinc-100 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-slate-700 text-base md:text-lg"
               />
             </div>
+
             <div>
               <label
                 htmlFor="message"
@@ -202,6 +218,7 @@ function ContactGrid() {
                 className="w-full bg-black border border-white/20 rounded-lg p-3 text-zinc-100 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-slate-700 text-base md:text-lg"
               />
             </div>
+
             <div className="pt-2">
               <button
                 type="submit"
