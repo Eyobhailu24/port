@@ -168,31 +168,11 @@ export const companies = [
 export const workExperience = [
   {
     id: 1,
-    title: 'Frontend Engineer Intern',
-    desc: 'Assisted in the development of a web-based platform using React.js, enhancing interactivity.',
-    className: 'md:col-span-2',
-    thumbnail: '/exp1.svg',
-  },
-  {
-    id: 2,
-    title: 'Mobile App Dev - JSM Tech',
-    desc: 'Designed and developed mobile app for both iOS & Android platforms using React Native.',
-    className: 'md:col-span-2', // change to md:col-span-2
-    thumbnail: '/exp2.svg',
-  },
-  {
-    id: 3,
-    title: 'Freelance App Dev Project',
-    desc: 'Led the dev of a mobile app for a client, from initial concept to deployment on app stores.',
-    className: 'md:col-span-2', // change to md:col-span-2
-    thumbnail: '/exp3.svg',
-  },
-  {
-    id: 4,
-    title: 'Lead Frontend Developer',
-    desc: 'Developed and maintained user-facing features using modern frontend technologies.',
-    className: 'md:col-span-2',
-    thumbnail: '/exp4.svg',
+    title: 'Junior Developer at Abugida Robotics',
+    desc: 'I worked on a project where I connected an Arduino device to a Flutter mobile application via Bluetooth using an Bluetooth module and the flutter bluetooth serial package. I programmed the Arduino to collect temperature sensor data and control a fan and heater, sending their statuses to the app in real time. On the Flutter side, I designed a responsive UI that displayed the average, minimum, and maximum temperature values, along with the fan and heater status.',
+    className: 'md:col-span-4',
+    thumbnail:
+      'https://z-p3-scontent.fadd1-1.fna.fbcdn.net/v/t39.30808-6/301818547_460967342709720_6339210392331087449_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=haaUWV1GCDgQ7kNvwE2OgQH&_nc_oc=AdkTaJ3Yr3yDw8dN2xR1iHWRunV7_RFzOOZbi32BarFpadD9j3oADL9TRK8UeehoptU&_nc_zt=23&_nc_ht=z-p3-scontent.fadd1-1.fna&_nc_gid=blYhXGjPCGVBKyWGAI_Njw&oh=00_AflUk2WbFcVCtPL9HayO9bXu1L1gYNojeU8WH-5y7t8F8g&oe=69345CBC',
   },
 ];
 
