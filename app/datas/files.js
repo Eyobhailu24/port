@@ -19,7 +19,8 @@ export const gridItems = [
     info: {
       name: 'Eyob Hailu',
       location: 'Addis Ababa, Ethiopia',
-      education: 'Bachelor Degree / Hawassa University',
+      education:
+        'Bachelor of Science in Computer Science / Hawassa University',
     },
   },
   // Empty/Bio card (middle)
