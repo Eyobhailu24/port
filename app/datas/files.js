@@ -44,10 +44,10 @@ export const gridItems = [
     titleClassName: '',
     spareImg: '',
     skills: [
-      { name: 'HTML / CSS / JavaScript', level: 91 },
       { name: 'React.js', level: 90 },
+      { name: 'Next.js', level: 90 },
+      { name: 'Hono', level: 89 },
       { name: 'Node.js', level: 89 },
-      { name: 'Next.js', level: 87 },
       { name: 'TailWind', level: 85 },
       { name: 'Flutter', level: 78 },
     ],
@@ -168,7 +168,7 @@ export const companies = [
 export const workExperience = [
   {
     id: 1,
-    title: 'Junior Developer at Abugida Robotics',
+    title: 'Mid-Level Developer at Abugida Robotics',
     desc: 'I worked on a project where I connected an Arduino device to a Flutter mobile application via Bluetooth using an Bluetooth module and the flutter bluetooth serial package. I programmed the Arduino to collect temperature sensor data and control a fan and heater, sending their statuses to the app in real time. On the Flutter side, I designed a responsive UI that displayed the average, minimum, and maximum temperature values, along with the fan and heater status.',
     className: 'md:col-span-4',
     thumbnail:
@@ -176,8 +176,8 @@ export const workExperience = [
   },
   {
     id: 2,
-    title: 'Junior Developer at Muyalogy',
-    desc: 'I am contributing to the development of a comprehensive ERP web application using Next.js for the frontend and Hono for the backend API. And also incorporating various services like Drizzle ORM for efficient database management.',
+    title: 'Full Stack Developer at Muyalogy',
+    desc: 'I am contributing to the development of a comprehensive HR system using Next.js and Shadcn for the frontend and Hono for the backend API. And also incorporating various services like Drizzle ORM for efficient database management.',
     className: 'md:col-span-4',
     thumbnail:
       'https://z-p3-scontent.fadd1-1.fna.fbcdn.net/v/t39.30808-6/301818547_460967342709720_6339210392331087449_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=haaUWV1GCDgQ7kNvwE2OgQH&_nc_oc=AdkTaJ3Yr3yDw8dN2xR1iHWRunV7_RFzOOZbi32BarFpadD9j3oADL9TRK8UeehoptU&_nc_zt=23&_nc_ht=z-p3-scontent.fadd1-1.fna&_nc_gid=blYhXGjPCGVBKyWGAI_Njw&oh=00_AflUk2WbFcVCtPL9HayO9bXu1L1gYNojeU8WH-5y7t8F8g&oe=69345CBC',
