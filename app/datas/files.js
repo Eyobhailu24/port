@@ -182,6 +182,14 @@ export const workExperience = [
     thumbnail:
       'https://z-p3-scontent.fadd1-1.fna.fbcdn.net/v/t39.30808-6/301818547_460967342709720_6339210392331087449_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=haaUWV1GCDgQ7kNvwE2OgQH&_nc_oc=AdkTaJ3Yr3yDw8dN2xR1iHWRunV7_RFzOOZbi32BarFpadD9j3oADL9TRK8UeehoptU&_nc_zt=23&_nc_ht=z-p3-scontent.fadd1-1.fna&_nc_gid=blYhXGjPCGVBKyWGAI_Njw&oh=00_AflUk2WbFcVCtPL9HayO9bXu1L1gYNojeU8WH-5y7t8F8g&oe=69345CBC',
   },
+  {
+    id: 3,
+    title: 'Full Stack Developer at A and B consultancy',
+    desc: 'i am developing a B2B (buyer to buyer) platform using Django for backend and Next.js for frontend.',
+    className: 'md:col-span-4',
+    thumbnail:
+      'https://z-p3-scontent.fadd1-1.fna.fbcdn.net/v/t39.30808-6/301818547_460967342709720_6339210392331087449_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=haaUWV1GCDgQ7kNvwE2OgQH&_nc_oc=AdkTaJ3Yr3yDw8dN2xR1iHWRunV7_RFzOOZbi32BarFpadD9j3oADL9TRK8UeehoptU&_nc_zt=23&_nc_ht=z-p3-scontent.fadd1-1.fna&_nc_gid=blYhXGjPCGVBKyWGAI_Njw&oh=00_AflUk2WbFcVCtPL9HayO9bXu1L1gYNojeU8WH-5y7t8F8g&oe=69345CBC',
+  },
 ];
 
 export const socialMedia = [
