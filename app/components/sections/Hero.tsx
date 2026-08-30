@@ -1,16 +1,20 @@
 'use client';
 
 import { motion, type Variants } from 'motion/react';
-import { ArrowDown, ArrowRight, Download } from 'lucide-react';
+import { ArrowRight, Download } from 'lucide-react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { profile } from '@/lib/content';
 import { Button } from '@/components/ui/button';
 import { AmbientGlow } from '@/app/components/motion/AmbientGlow';
 
-const headline = 'Code, design, deploy — I bring ideas to life.';
+const socials = [
+  { name: 'GitHub', href: profile.github, icon: FaGithub },
+  { name: 'LinkedIn', href: profile.linkedin, icon: FaLinkedin },
+];
 
 const container: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.045, delayChildren: 0.15 } },
+  visible: { transition: { staggerChildren: 0.04, delayChildren: 0.15 } },
 };
 
 const word: Variants = {
@@ -23,79 +27,186 @@ const word: Variants = {
   },
 };
 
+const fadeUp = (delay: number) => ({
+  initial: { opacity: 0, y: 16 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5, delay },
+});
+
+function Headline({ text }: { text: string }) {
+  return (
+    <motion.span variants={container} initial="hidden" animate="visible">
+      {text.split(' ').map((w, i) => (
+        <motion.span key={i} variants={word} className="inline-block">
+          {w}&nbsp;
+        </motion.span>
+      ))}
+    </motion.span>
+  );
+}
+
+/** Small wireframe "globe" made of stroked ellipses — no external asset. */
+function WireframeGlobe() {
+  return (
+    <svg
+      aria-hidden
+      viewBox="0 0 400 400"
+      className="pointer-events-none absolute top-1/2 -right-16 h-[360px] w-[360px] -translate-y-1/2 text-lime-400 opacity-25 sm:h-[440px] sm:w-[440px]"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1"
+    >
+      <circle cx="200" cy="200" r="150" />
+      <ellipse cx="200" cy="200" rx="150" ry="50" />
+      <ellipse cx="200" cy="200" rx="150" ry="95" />
+      <ellipse cx="200" cy="200" rx="60" ry="150" />
+      <ellipse cx="200" cy="200" rx="110" ry="150" />
+      <line x1="50" y1="200" x2="350" y2="200" />
+    </svg>
+  );
+}
+
+function CodeWindow() {
+  return (
+    <div className="relative overflow-hidden rounded-xl border border-border bg-card shadow-2xl shadow-black/20">
+      <div className="flex items-center gap-2 border-b border-border bg-muted/50 px-4 py-3">
+        <span className="size-2.5 rounded-full bg-red-500/70" />
+        <span className="size-2.5 rounded-full bg-yellow-500/70" />
+        <span className="size-2.5 rounded-full bg-green-500/70" />
+        <span className="ml-3 font-mono text-xs text-muted-foreground">
+          eyob.profile.js
+        </span>
+      </div>
+      <pre className="overflow-x-auto p-5 font-mono text-[13px] leading-relaxed sm:text-sm">
+        <code>
+          <span className="text-muted-foreground">01 </span>
+          <span className="text-muted-foreground">const </span>
+          <span>EyobHailu</span> = {'{'}
+          {'\n'}
+          <span className="text-muted-foreground">02 </span>
+          {'  '}role: <span className="text-brand">&apos;Full-Stack Developer&apos;</span>,
+          {'\n'}
+          <span className="text-muted-foreground">03 </span>
+          {'  '}stack: [
+          <span className="text-brand">&apos;React&apos;</span>,{' '}
+          <span className="text-brand">&apos;Next.js&apos;</span>,{' '}
+          <span className="text-brand">&apos;Node.js&apos;</span>,{' '}
+          <span className="text-brand">&apos;Hono&apos;</span>],
+          {'\n'}
+          <span className="text-muted-foreground">04 </span>
+          {'  '}location: <span className="text-brand">&apos;Addis Ababa, ET&apos;</span>,
+          {'\n'}
+          <span className="text-muted-foreground">05 </span>
+          {'  '}mission:
+          {'\n'}
+          <span className="text-muted-foreground">06 </span>
+          {'    '}
+          <span className="text-brand">
+            &apos;Turn ideas into fast, reliable apps.&apos;
+          </span>
+          ,{'\n'}
+          <span className="text-muted-foreground">07 </span>
+          {'}'};{'\n'}
+          <span className="text-muted-foreground">08 </span>
+          {'\n'}
+          <span className="text-muted-foreground">09 </span>
+          <span className="text-muted-foreground">
+            // Building real products, one commit at a time.
+          </span>
+        </code>
+      </pre>
+    </div>
+  );
+}
+
 export function Hero() {
   return (
-    <section
-      id="Home"
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 py-32 text-center"
-    >
+    <section id="Home" className="relative overflow-hidden border-b border-border">
       <AmbientGlow variant="hero" />
 
-      <div className="relative z-10 flex max-w-3xl flex-col items-center">
-        <motion.span
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-6 rounded-full border border-border/60 bg-background/60 px-4 py-1.5 font-mono text-xs tracking-widest text-muted-foreground uppercase backdrop-blur-sm"
-        >
-          {profile.role}
-        </motion.span>
-
-        <motion.h1
-          variants={container}
-          initial="hidden"
-          animate="visible"
-          className="text-brand text-4xl leading-tight font-bold text-balance sm:text-5xl md:text-6xl"
-        >
-          {headline.split(' ').map((w, i) => (
-            <motion.span key={i} variants={word} className="inline-block">
-              {w}&nbsp;
-            </motion.span>
-          ))}
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg"
-        >
-          Hi, I&apos;m {profile.name} — a {profile.role.toLowerCase()} building
-          fast, reliable web apps from front end to back end.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.75 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
-        >
-          <Button asChild size="lg" className="rounded-full px-6">
-            <a href="#projects">
-              View Work <ArrowRight className="size-4" />
-            </a>
-          </Button>
-          <Button asChild variant="outline" size="lg" className="rounded-full px-6">
-            <a href={profile.resumeUrl} download>
-              Download CV <Download className="size-4" />
-            </a>
-          </Button>
-        </motion.div>
+      {/* Vertical social rail — desktop only */}
+      <div className="absolute top-1/2 left-6 hidden -translate-y-1/2 flex-col items-center gap-5 lg:flex">
+        <span className="h-14 w-px bg-border" />
+        {socials.map(({ name, href, icon: Icon }) => (
+          <a
+            key={name}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={name}
+            className="text-muted-foreground transition-colors hover:text-lime-400"
+          >
+            <Icon className="size-4" />
+          </a>
+        ))}
+        <span className="h-14 w-px bg-border" />
       </div>
 
-      <motion.a
-        href="#about"
-        aria-label="Scroll to About section"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 8, 0] }}
-        transition={{
-          opacity: { duration: 0.5, delay: 1.2 },
-          y: { duration: 1.6, repeat: Infinity, ease: 'easeInOut' },
-        }}
-        className="absolute bottom-10 z-10 text-muted-foreground transition-colors hover:text-foreground"
-      >
-        <ArrowDown className="size-5" />
-      </motion.a>
+      <div className="relative z-10 mx-auto grid max-w-6xl gap-16 px-6 py-20 lg:grid-cols-2 lg:items-center lg:gap-12 lg:py-28">
+        {/* Text column */}
+        <div>
+          <motion.p
+            {...fadeUp(0)}
+            className="text-brand mb-4 font-mono text-sm"
+          >
+            &lt; Hello, I&apos;m /&gt;
+          </motion.p>
+
+          <h1 className="text-4xl leading-[1.05] font-bold tracking-tight text-balance uppercase sm:text-5xl md:text-6xl">
+            <Headline text="Eyob" />
+            <span className="text-brand">
+              <Headline text="Hailu" />
+            </span>
+          </h1>
+
+          <motion.p
+            {...fadeUp(0.5)}
+            className="mt-4 font-mono text-sm tracking-widest text-muted-foreground uppercase"
+          >
+            Full-Stack Developer
+          </motion.p>
+
+          <motion.p
+            {...fadeUp(0.6)}
+            className="mt-5 max-w-md text-sm text-muted-foreground sm:text-base"
+          >
+            I build fast, reliable web apps from front end to back end —
+            turning ideas into functional, scalable products.
+          </motion.p>
+
+          <motion.div {...fadeUp(0.75)} className="mt-8 flex flex-wrap items-center gap-4">
+            <Button asChild size="lg">
+              <a href="#projects">
+                View My Work <ArrowRight className="size-4" />
+              </a>
+            </Button>
+            <Button asChild variant="outline" size="lg">
+              <a href={profile.resumeUrl} download>
+                Download Resume <Download className="size-4" />
+              </a>
+            </Button>
+          </motion.div>
+
+          <motion.p
+            {...fadeUp(0.9)}
+            className="mt-8 font-mono text-xs text-muted-foreground"
+          >
+            <span className="text-brand">// </span>
+            Currently focused on the MERN stack.
+          </motion.p>
+        </div>
+
+        {/* Code window column */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="relative"
+        >
+          <WireframeGlobe />
+          <CodeWindow />
+        </motion.div>
+      </div>
     </section>
   );
 }

@@ -11,7 +11,16 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { Reveal } from '@/app/components/motion/Reveal';
+import { AmbientGlow } from '@/app/components/motion/AmbientGlow';
+import { SectionHeading } from '@/app/components/motion/SectionHeading';
 
 const contactLinks = [
   { name: 'Email', value: profile.email, href: `mailto:${profile.email}`, icon: Mail },
@@ -23,6 +32,13 @@ const contactLinks = [
   },
   { name: 'GitHub', value: '@Eyobhailu24', href: profile.github, icon: FaGithub },
   { name: 'LinkedIn', value: 'Eyob Hailu', href: profile.linkedin, icon: FaLinkedin },
+];
+
+const projectTypes = [
+  { value: 'new-project', label: 'New Project' },
+  { value: 'freelance', label: 'Freelance Work' },
+  { value: 'full-time', label: 'Full-Time Opportunity' },
+  { value: 'other', label: 'Other' },
 ];
 
 export function Contact() {
@@ -55,14 +71,12 @@ export function Contact() {
 
   return (
     <section id="contact" className="relative px-6 py-24 md:py-32">
-      <Reveal className="mx-auto mb-14 max-w-2xl text-center">
-        <h2 className="text-brand text-3xl font-bold sm:text-4xl">
-          Let&apos;s Work Together
-        </h2>
-        <p className="mt-3 text-muted-foreground">
-          Have a project in mind? Send me a message.
-        </p>
-      </Reveal>
+      <AmbientGlow variant="subtle" className="-z-10" />
+      <SectionHeading
+        eyebrow="Contact"
+        title="Let's build something together."
+        subtitle="Have a project in mind? Send me a message."
+      />
 
       <div className="mx-auto grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2">
         <Reveal from="left">
@@ -79,7 +93,7 @@ export function Contact() {
                   rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   className="flex items-center gap-3 text-sm text-foreground/90 transition-colors hover:text-foreground"
                 >
-                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full border border-border/60 text-muted-foreground">
+                  <span className="text-brand flex size-9 shrink-0 items-center justify-center rounded-lg border border-lime-400/30 bg-lime-400/10">
                     <Icon className="size-4" />
                   </span>
                   <span>
@@ -89,7 +103,7 @@ export function Contact() {
                 </a>
               ))}
 
-              <div className="mt-2 border-t border-border/60 pt-4 text-sm">
+              <div className="mt-2 border-t border-border pt-4 text-sm">
                 <span className="block text-xs text-muted-foreground">Location</span>
                 {profile.location}
               </div>
@@ -111,20 +125,37 @@ export function Contact() {
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_template" value="table" />
 
-                <div className="flex flex-col gap-1.5">
-                  <Label htmlFor="user_name">Full Name</Label>
-                  <Input id="user_name" name="user_name" required placeholder="Your name" />
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <div className="flex flex-col gap-1.5">
+                    <Label htmlFor="user_name">Full Name</Label>
+                    <Input id="user_name" name="user_name" required placeholder="Your name" />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <Label htmlFor="user_email">Email Address</Label>
+                    <Input
+                      id="user_email"
+                      name="user_email"
+                      type="email"
+                      required
+                      placeholder="you@example.com"
+                    />
+                  </div>
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <Label htmlFor="user_email">Email Address</Label>
-                  <Input
-                    id="user_email"
-                    name="user_email"
-                    type="email"
-                    required
-                    placeholder="you@example.com"
-                  />
+                  <Label htmlFor="project_type">Project Type</Label>
+                  <Select name="project_type" defaultValue="new-project">
+                    <SelectTrigger id="project_type" className="w-full">
+                      <SelectValue placeholder="Select a project type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {projectTypes.map((type) => (
+                        <SelectItem key={type.value} value={type.value}>
+                          {type.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
 
                 <div className="flex flex-col gap-1.5">
@@ -138,7 +169,7 @@ export function Contact() {
                   />
                 </div>
 
-                <Button type="submit" disabled={submitting} className="mt-1 rounded-full">
+                <Button type="submit" disabled={submitting} className="mt-1">
                   {submitting ? (
                     <>
                       Sending <Loader2 className="size-4 animate-spin" />

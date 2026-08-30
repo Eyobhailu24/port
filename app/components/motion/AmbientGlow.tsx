@@ -7,10 +7,9 @@ type AmbientGlowProps = {
 };
 
 /**
- * Decorative animated sky-blue glow behind hero/section content — a few
- * blurred, solid-color (no gradient) circles drifting slowly. Replaces the
- * old Spotlight.jsx (CSS glow) and Sparkles.jsx (tsparticles) components
- * with a single, lighter-weight effect.
+ * Decorative animated neon-green glow behind hero/section content — a
+ * couple of blurred, solid-color (no gradient) circles drifting slowly, kept
+ * restrained so the flat-black "terminal" background stays dominant.
  */
 export function AmbientGlow({ className, variant = 'hero' }: AmbientGlowProps) {
   const subtle = variant === 'subtle';
@@ -23,19 +22,13 @@ export function AmbientGlow({ className, variant = 'hero' }: AmbientGlowProps) {
         className
       )}
     >
-      <div
-        className={cn(
-          'absolute inset-0',
-          subtle ? 'opacity-30 dark:opacity-40' : 'opacity-50 dark:opacity-70'
-        )}
-      >
-        <div className="animate-blob-first absolute top-1/4 left-1/4 h-[40vmax] w-[40vmax] -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-400/40 blur-[80px]" />
-        <div className="animate-blob-fourth absolute top-1/2 left-1/2 h-[35vmax] w-[35vmax] -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-500/30 blur-[80px]" />
+      <div className={cn('absolute inset-0', subtle ? 'opacity-10' : 'opacity-20')}>
+        <div className="animate-blob-first absolute top-1/4 left-1/4 h-[36vmax] w-[36vmax] -translate-x-1/2 -translate-y-1/2 rounded-full bg-lime-400/50 blur-[100px]" />
         {!subtle && (
-          <div className="animate-blob-third absolute top-1/3 right-1/4 h-[30vmax] w-[30vmax] translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-300/30 blur-[80px]" />
+          <div className="animate-blob-fourth absolute top-1/2 right-1/4 h-[30vmax] w-[30vmax] translate-x-1/2 -translate-y-1/2 rounded-full bg-lime-500/40 blur-[100px]" />
         )}
       </div>
-      <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_85%)] bg-background/40" />
+      <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_80%)] bg-background/60" />
     </div>
   );
 }

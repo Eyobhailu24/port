@@ -23,8 +23,10 @@ export const highlights = [
 
 export const navItems = [
   { name: 'About', href: '#about' },
+  { name: 'Skills', href: '#skills' },
   { name: 'Projects', href: '#projects' },
   { name: 'Experience', href: '#experience' },
+  { name: 'Testimonials', href: '#testimonials' },
   { name: 'Contact', href: '#contact' },
 ] as const;
 
@@ -35,6 +37,33 @@ export const skills = [
   { name: 'Hono', level: 89 },
   { name: 'Tailwind CSS', level: 85 },
   { name: 'Flutter', level: 78 },
+] as const;
+
+export const services = [
+  {
+    title: 'Frontend Engineering',
+    description: 'Building responsive, accessible interfaces with React and Next.js.',
+  },
+  {
+    title: 'Backend Development',
+    description: 'Designing efficient APIs and server-side logic with Node.js and Hono.',
+  },
+  {
+    title: 'Mobile Development',
+    description: 'Building cross-platform mobile apps with Flutter.',
+  },
+  {
+    title: 'UI Engineering',
+    description: 'Crafting clean, responsive layouts and design systems with Tailwind CSS.',
+  },
+  {
+    title: 'Database & ORM',
+    description: 'Modeling and managing data with MongoDB and Drizzle ORM.',
+  },
+  {
+    title: 'Realtime & APIs',
+    description: 'Building real-time features and integrations with Socket.io and REST APIs.',
+  },
 ] as const;
 
 export type Project = {
