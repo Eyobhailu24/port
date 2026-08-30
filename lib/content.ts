@@ -1,0 +1,123 @@
+// Single source of truth for every real fact on the site.
+// Replaces the old app/datas/files.js, app/datas/data.js, and root data/index.js.
+
+export const profile = {
+  name: 'Eyob Hailu',
+  role: 'Full-Stack Developer',
+  location: 'Addis Ababa, Ethiopia',
+  education: 'B.Sc. in Computer Science, Hawassa University',
+  avatar: '/finalcv.jpg',
+  resumeUrl: '/eyob-hailu-cv.pdf',
+  email: 'eyobhailu246@gmail.com',
+  phone: '+251 968 475 774',
+  github: 'https://github.com/Eyobhailu24',
+  linkedin: 'https://www.linkedin.com/in/eyob-hailu-58b240202/',
+  responseTime: 'Usually within 24 hours',
+  bio: "I'm a passionate full-stack developer focused on the MERN stack (MongoDB, Express.js, React, and Node.js). After graduating from Hawassa University with a strong foundation in software development and problem-solving, I've worked across multiple projects — from designing intuitive user interfaces to building efficient, scalable server-side systems. I enjoy turning ideas into functional products and thrive in collaborative environments where creativity and technology meet.",
+} as const;
+
+export const highlights = [
+  { value: '10+', label: 'Projects Delivered' },
+  { value: '3', label: 'Companies Worked With' },
+] as const;
+
+export const navItems = [
+  { name: 'About', href: '#about' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Contact', href: '#contact' },
+] as const;
+
+export const skills = [
+  { name: 'React.js', level: 90 },
+  { name: 'Next.js', level: 90 },
+  { name: 'Node.js', level: 89 },
+  { name: 'Hono', level: 89 },
+  { name: 'Tailwind CSS', level: 85 },
+  { name: 'Flutter', level: 78 },
+] as const;
+
+export type Project = {
+  id: number;
+  title: string;
+  description: string;
+  stack: string[];
+  img: string;
+  link: string;
+};
+
+export const projects: Project[] = [
+  {
+    id: 1,
+    title: 'Flash Delivery',
+    description:
+      'A full-stack food delivery platform where users can browse restaurants, place orders, and track deliveries in real time. Includes dedicated interfaces for customers, restaurant managers, and delivery drivers, with order management, payment integration, and live status updates.',
+    stack: ['React', 'Node.js', 'Express', 'MongoDB', 'Socket.io', 'Tailwind CSS'],
+    img: '/flashde.jpg',
+    link: 'https://flash-delivery.onrender.com/',
+  },
+  {
+    id: 2,
+    title: 'The Wild Oasis',
+    description:
+      'A modern, visually immersive demo site for a luxury cabin retreat, built with Next.js and authenticated via NextAuth. Focused on fast performance and a smooth, polished user experience.',
+    stack: ['Next.js', 'React', 'NextAuth'],
+    img: '/wild.jpg',
+    link: 'https://the-wild-oasis-website-demo-roan.vercel.app/',
+  },
+  {
+    id: 3,
+    title: 'Atomic Blog',
+    description:
+      'A fast, responsive blogging platform built with React, using the Context API for clean global state management, smooth client-side navigation, and efficient content rendering.',
+    stack: ['React', 'Context API'],
+    img: '/ablog.jpg',
+    link: 'https://atomic-blog-peach-seven.vercel.app/',
+  },
+];
+
+export type ExperienceItem = {
+  id: number;
+  role: string;
+  company: string;
+  description: string;
+};
+
+export const experience: ExperienceItem[] = [
+  {
+    id: 1,
+    role: 'Mid-Level Developer',
+    company: 'Abugida Robotics',
+    description:
+      'Connected an Arduino device to a Flutter mobile app over Bluetooth, using a Bluetooth module and the flutter_bluetooth_serial package. Programmed the Arduino to collect temperature sensor data and control a fan and heater, streaming their status to the app in real time. On the Flutter side, built a responsive UI showing average, minimum, and maximum temperature alongside live fan and heater status.',
+  },
+  {
+    id: 2,
+    role: 'Full-Stack Developer',
+    company: 'Muyalogy',
+    description:
+      'Contributing to a comprehensive HR system, using Next.js and shadcn/ui for the frontend and Hono for the backend API, with Drizzle ORM for efficient database management.',
+  },
+  {
+    id: 3,
+    role: 'Full-Stack Developer',
+    company: 'A and B Consultancy',
+    description:
+      'Developing a B2B (business-to-business) platform, using Django for the backend and Next.js for the frontend.',
+  },
+];
+
+export type Tool = {
+  id: number;
+  name: string;
+  logo: string;
+  wordmark: string;
+};
+
+export const tools: Tool[] = [
+  { id: 1, name: 'Cloudinary', logo: '/cloud.svg', wordmark: '/cloudName.svg' },
+  { id: 2, name: 'Appwrite', logo: '/app.svg', wordmark: '/appName.svg' },
+  { id: 3, name: 'Hostinger', logo: '/host.svg', wordmark: '/hostName.svg' },
+  { id: 4, name: 'Stream', logo: '/s.svg', wordmark: '/streamName.svg' },
+  { id: 5, name: 'Docker', logo: '/dock.svg', wordmark: '/dockerName.svg' },
+];
