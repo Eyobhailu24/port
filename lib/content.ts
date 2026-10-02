@@ -5,7 +5,7 @@ export const profile = {
   name: 'Eyob Hailu',
   role: 'Full-Stack Developer',
   location: 'Addis Ababa, Ethiopia',
-  education: 'B.Sc. in Computer Science, Hawassa University',
+  education: 'Currently enrolled at Lincoln University (Missouri); B.Sc. in Computer Science, Hawassa University',
   avatar: '/finalcv.jpg',
   resumeUrl: '/eyob-hailu-cv.pdf',
   email: 'eyobhailu246@gmail.com',
@@ -13,7 +13,7 @@ export const profile = {
   github: 'https://github.com/Eyobhailu24',
   linkedin: 'https://www.linkedin.com/in/eyob-hailu-58b240202/',
   responseTime: 'Usually within 24 hours',
-  bio: "I'm a passionate full-stack developer focused on the MERN stack (MongoDB, Express.js, React, and Node.js). After graduating from Hawassa University with a strong foundation in software development and problem-solving, I've worked across multiple projects — from designing intuitive user interfaces to building efficient, scalable server-side systems. I enjoy turning ideas into functional products and thrive in collaborative environments where creativity and technology meet.",
+  bio: "I'm a passionate full-stack developer focused on the MERN stack (MongoDB, Express.js, React, and Node.js). After graduating from Hawassa University with a strong foundation in software development and problem-solving, I've worked across multiple projects — from designing intuitive user interfaces to building efficient, scalable server-side systems. I'm currently enrolled at Lincoln University in Missouri, continuing my education alongside my development work. I enjoy turning ideas into functional products and thrive in collaborative environments where creativity and technology meet.",
 } as const;
 
 export const highlights = [
@@ -30,10 +30,25 @@ export const navItems = [
   { name: 'Contact', href: '#contact' },
 ] as const;
 
-// Existing portfolio facts; dates and further qualifications await a profile export.
-export const education = [
-  { degree: 'B.Sc. in Computer Science', institution: 'Hawassa University' },
-] as const;
+export type EducationItem = {
+  institution: string;
+  degree?: string;
+  status: 'Currently enrolled' | 'Completed';
+  period?: string;
+};
+
+export const education: EducationItem[] = [
+  {
+    institution: 'Lincoln University (Missouri)',
+    status: 'Currently enrolled',
+    // Enrollment confirmed by Eyob; program and dates have not been provided.
+  },
+  {
+    degree: 'B.Sc. in Computer Science',
+    institution: 'Hawassa University',
+    status: 'Completed',
+  },
+];
 
 export const skills = [
   { name: 'React.js', level: 90 },

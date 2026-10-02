@@ -6,8 +6,9 @@ export const knowledge = [
     text: `${profile.name}. ${profile.role}. Based in ${profile.location}. ${profile.bio}`,
   },
   ...education.map((item) => ({
-    title: item.institution, href: '#education', keywords: 'education study studied school university degree graduate graduation qualification',
-    text: `${item.degree}, ${item.institution}. Graduation dates, grades and certifications are not recorded.`,
+    title: item.institution, href: '#education',
+    keywords: `education study studied studies school university college degree graduation qualification ${item.status === 'Currently enrolled' ? 'current currently enrolled enrollment studying ongoing present' : 'completed graduated graduate'}`,
+    text: `${item.degree ? `${item.degree}, ` : ''}${item.institution}. Status: ${item.status}. ${item.period ? `Study period: ${item.period}.` : 'Enrollment and graduation dates are not recorded.'} ${item.degree ? '' : 'The degree or program is not recorded. '}Grades and certifications are not recorded.`,
   })),
   ...experience.map((item) => ({
     title: `${item.role} at ${item.company}`, href: '#experience', keywords: 'work worked job career company employer employment experience role',
