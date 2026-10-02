@@ -1,7 +1,7 @@
 import { Code2, Container, HardDrive, ShieldCheck, Waypoints, Zap, type LucideIcon } from 'lucide-react';
 import type { IconType } from 'react-icons';
 import {
-  SiCoolify, SiDjango, SiDrizzle, SiExpress, SiFastapi, SiFlutter, SiHono, SiMongodb,
+  SiCoolify, SiDjango, SiDrizzle, SiExpress, SiFastapi, SiFlutter, SiGit, SiGithub, SiHono, SiMongodb,
   SiNextdotjs, SiNodedotjs, SiPython, SiReact, SiShadcnui, SiSocketdotio, SiTailwindcss,
 } from 'react-icons/si';
 import { skills } from '@/lib/content';
@@ -29,6 +29,8 @@ const icons: Record<string, IconType | LucideIcon> = {
   'AWS S3': HardDrive,
   'AWS Lambda': Zap,
   OAuth: ShieldCheck,
+  Git: SiGit,
+  GitHub: SiGithub,
 };
 
 export function SkillsMarquee() {

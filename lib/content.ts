@@ -76,6 +76,8 @@ export const skills = [
   { name: 'AWS S3' },
   { name: 'AWS Lambda' },
   { name: 'OAuth' },
+  { name: 'Git' },
+  { name: 'GitHub' },
 ] as const;
 
 export const services = [
