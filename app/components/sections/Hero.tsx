@@ -9,12 +9,21 @@ import { AmbientGlow } from '@/app/components/motion/AmbientGlow';
 
 const socials = [
   { name: 'GitHub', href: profile.github, icon: FaGithub },
-  { name: 'LinkedIn', href: profile.linkedin, icon: FaLinkedin },
+  {
+    name: 'LinkedIn',
+    href: profile.linkedin,
+    icon: FaLinkedin,
+  },
 ];
 
 const container: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.04, delayChildren: 0.15 } },
+  visible: {
+    transition: {
+      staggerChildren: 0.04,
+      delayChildren: 0.15,
+    },
+  },
 };
 
 const word: Variants = {
@@ -23,7 +32,10 @@ const word: Variants = {
     opacity: 1,
     y: 0,
     filter: 'blur(0px)',
-    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
+    transition: {
+      duration: 0.5,
+      ease: [0.16, 1, 0.3, 1] as const,
+    },
   },
 };
 
@@ -35,9 +47,17 @@ const fadeUp = (delay: number) => ({
 
 function Headline({ text }: { text: string }) {
   return (
-    <motion.span variants={container} initial="hidden" animate="visible">
+    <motion.span
+      variants={container}
+      initial="hidden"
+      animate="visible"
+    >
       {text.split(' ').map((w, i) => (
-        <motion.span key={i} variants={word} className="inline-block">
+        <motion.span
+          key={i}
+          variants={word}
+          className="inline-block"
+        >
           {w}&nbsp;
         </motion.span>
       ))}
@@ -80,22 +100,42 @@ function CodeWindow() {
       <pre className="overflow-x-auto p-5 font-mono text-[13px] leading-relaxed sm:text-sm">
         <code>
           <span className="text-muted-foreground">01 </span>
-          <span className="text-muted-foreground">const </span>
+          <span className="text-muted-foreground">
+            const{' '}
+          </span>
           <span>EyobHailu</span> = {'{'}
           {'\n'}
           <span className="text-muted-foreground">02 </span>
-          {'  '}role: <span className="text-brand">&apos;Full-Stack Developer&apos;</span>,
-          {'\n'}
+          {'  '}role:{' '}
+          <span className="text-brand">
+            &apos;Full-Stack Developer&apos;
+          </span>
+          ,{'\n'}
           <span className="text-muted-foreground">03 </span>
           {'  '}stack: [
-          <span className="text-brand">&apos;React&apos;</span>,{' '}
-          <span className="text-brand">&apos;Next.js&apos;</span>,{' '}
-          <span className="text-brand">&apos;Node.js&apos;</span>,{' '}
-          <span className="text-brand">&apos;Hono&apos;</span>],
+          <span className="text-brand">
+            &apos;React&apos;
+          </span>
+          ,{' '}
+          <span className="text-brand">
+            &apos;Next.js&apos;
+          </span>
+          ,{' '}
+          <span className="text-brand">
+            &apos;Node.js&apos;
+          </span>
+          ,{' '}
+          <span className="text-brand">
+            &apos;Hono&apos;
+          </span>
+          ],
           {'\n'}
           <span className="text-muted-foreground">04 </span>
-          {'  '}location: <span className="text-brand">&apos;Addis Ababa, ET&apos;</span>,
-          {'\n'}
+          {'  '}location:{' '}
+          <span className="text-brand">
+            &apos;Missouri, United States&apos;
+          </span>
+          ,{'\n'}
           <span className="text-muted-foreground">05 </span>
           {'  '}mission:
           {'\n'}
@@ -111,7 +151,9 @@ function CodeWindow() {
           {'\n'}
           <span className="text-muted-foreground">09 </span>
           <span className="text-muted-foreground">
-            {'// Building real products, one commit at a time.'}
+            {
+              '// Building real products, one commit at a time.'
+            }
           </span>
         </code>
       </pre>
@@ -121,7 +163,10 @@ function CodeWindow() {
 
 export function Hero() {
   return (
-    <section id="Home" className="relative overflow-hidden border-b border-border">
+    <section
+      id="Home"
+      className="relative overflow-hidden border-b border-border"
+    >
       <AmbientGlow variant="hero" />
 
       {/* Vertical social rail — desktop only */}
@@ -170,19 +215,25 @@ export function Hero() {
             {...fadeUp(0.6)}
             className="mt-5 max-w-md text-sm text-muted-foreground sm:text-base"
           >
-            I build fast, reliable web apps from front end to back end —
-            turning ideas into functional, scalable products.
+            I build fast, reliable web apps from front end
+            to back end — turning ideas into functional,
+            scalable products.
           </motion.p>
 
-          <motion.div {...fadeUp(0.75)} className="mt-8 flex flex-wrap items-center gap-4">
+          <motion.div
+            {...fadeUp(0.75)}
+            className="mt-8 flex flex-wrap items-center gap-4"
+          >
             <Button asChild size="lg">
               <a href="#projects">
-                View My Work <ArrowRight className="size-4" />
+                View My Work{' '}
+                <ArrowRight className="size-4" />
               </a>
             </Button>
             <Button asChild variant="outline" size="lg">
               <a href={profile.resumeUrl} download>
-                Download Resume <Download className="size-4" />
+                Download Resume{' '}
+                <Download className="size-4" />
               </a>
             </Button>
           </motion.div>
@@ -200,7 +251,11 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          transition={{
+            duration: 0.7,
+            delay: 0.2,
+            ease: [0.16, 1, 0.3, 1],
+          }}
           className="relative"
         >
           <WireframeGlobe />
