@@ -4,14 +4,16 @@
 export const profile = {
   name: 'Eyob Hailu',
   role: 'Full-Stack Developer',
-  location: 'Addis Ababa, Ethiopia',
-  education: 'Currently enrolled at Lincoln University (Missouri); B.Sc. in Computer Science, Hawassa University',
+  location: 'Missouri, United States',
+  education:
+    'Currently enrolled at Lincoln University (Missouri); B.Sc. in Computer Science, Hawassa University',
   avatar: '/finalcv.jpg',
   resumeUrl: '/eyob-hailu-cv.pdf',
   email: 'eyobhailu246@gmail.com',
-  phone: '+251 968 475 774',
+  phone: '+15736165023',
   github: 'https://github.com/Eyobhailu24',
-  linkedin: 'https://www.linkedin.com/in/eyob-hailu-58b240202/',
+  linkedin:
+    'https://www.linkedin.com/in/eyob-hailu-58b240202/',
   responseTime: 'Usually within 24 hours',
   bio: "I'm a passionate full-stack developer focused on the MERN stack (MongoDB, Express.js, React, and Node.js). After graduating from Hawassa University with a strong foundation in software development and problem-solving, I've worked across multiple projects — from designing intuitive user interfaces to building efficient, scalable server-side systems. I'm currently enrolled at Lincoln University in Missouri, continuing my education alongside my development work. I enjoy turning ideas into functional products and thrive in collaborative environments where creativity and technology meet.",
 } as const;
@@ -79,27 +81,33 @@ export const skills = [
 export const services = [
   {
     title: 'Frontend Engineering',
-    description: 'Building responsive, accessible interfaces with React and Next.js.',
+    description:
+      'Building responsive, accessible interfaces with React and Next.js.',
   },
   {
     title: 'Backend Development',
-    description: 'Designing efficient APIs and server-side logic with Node.js and Hono.',
+    description:
+      'Designing efficient APIs and server-side logic with Node.js and Hono.',
   },
   {
     title: 'Mobile Development',
-    description: 'Building cross-platform mobile apps with Flutter.',
+    description:
+      'Building cross-platform mobile apps with Flutter.',
   },
   {
     title: 'UI Engineering',
-    description: 'Crafting clean, responsive layouts and design systems with Tailwind CSS.',
+    description:
+      'Crafting clean, responsive layouts and design systems with Tailwind CSS.',
   },
   {
     title: 'Database & ORM',
-    description: 'Modeling and managing data with MongoDB and Drizzle ORM.',
+    description:
+      'Modeling and managing data with MongoDB and Drizzle ORM.',
   },
   {
     title: 'Realtime & APIs',
-    description: 'Building real-time features and integrations with Socket.io and REST APIs.',
+    description:
+      'Building real-time features and integrations with Socket.io and REST APIs.',
   },
 ] as const;
 
@@ -181,11 +189,36 @@ export type Tool = {
 };
 
 export const tools: Tool[] = [
-  { id: 1, name: 'Cloudinary', logo: '/cloud.svg', wordmark: '/cloudName.svg' },
-  { id: 2, name: 'Appwrite', logo: '/app.svg', wordmark: '/appName.svg' },
-  { id: 3, name: 'Hostinger', logo: '/host.svg', wordmark: '/hostName.svg' },
-  { id: 4, name: 'Stream', logo: '/s.svg', wordmark: '/streamName.svg' },
-  { id: 5, name: 'Docker', logo: '/dock.svg', wordmark: '/dockerName.svg' },
+  {
+    id: 1,
+    name: 'Cloudinary',
+    logo: '/cloud.svg',
+    wordmark: '/cloudName.svg',
+  },
+  {
+    id: 2,
+    name: 'Appwrite',
+    logo: '/app.svg',
+    wordmark: '/appName.svg',
+  },
+  {
+    id: 3,
+    name: 'Hostinger',
+    logo: '/host.svg',
+    wordmark: '/hostName.svg',
+  },
+  {
+    id: 4,
+    name: 'Stream',
+    logo: '/s.svg',
+    wordmark: '/streamName.svg',
+  },
+  {
+    id: 5,
+    name: 'Docker',
+    logo: '/dock.svg',
+    wordmark: '/dockerName.svg',
+  },
   { id: 6, name: 'Dokploy' },
   { id: 7, name: 'Coolify' },
   { id: 8, name: 'AWS S3' },
