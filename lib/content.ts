@@ -23,11 +23,17 @@ export const highlights = [
 
 export const navItems = [
   { name: 'About', href: '#about' },
+  { name: 'Education', href: '#education' },
   { name: 'Skills', href: '#skills' },
   { name: 'Projects', href: '#projects' },
   { name: 'Experience', href: '#experience' },
   { name: 'Testimonials', href: '#testimonials' },
   { name: 'Contact', href: '#contact' },
+] as const;
+
+// Existing portfolio facts; dates and further qualifications await a profile export.
+export const education = [
+  { degree: 'B.Sc. in Computer Science', institution: 'Hawassa University' },
 ] as const;
 
 export const skills = [

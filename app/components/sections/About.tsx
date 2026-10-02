@@ -14,7 +14,7 @@ export function About() {
         <Reveal from="left" className="relative mx-auto w-full max-w-xs lg:mx-0">
           <div
             aria-hidden
-            className="absolute -top-3 -left-3 h-10 w-10 border-t-2 border-l-2 border-lime-400/70"
+            className="absolute -top-3 -left-3 h-10 w-10 border-t-2 border-l-2 border-sky-400/70"
           />
           <div className="relative aspect-[4/5] overflow-hidden rounded-xl border border-border">
             <img
@@ -22,18 +22,18 @@ export function About() {
               alt={profile.name}
               className="h-full w-full object-cover object-top grayscale contrast-110 brightness-90"
             />
-            <div className="absolute inset-0 bg-lime-500/15 mix-blend-color" />
+            <div className="absolute inset-0 bg-sky-500/15 mix-blend-color" />
             <div className="absolute inset-0 shadow-[inset_0_0_100px_40px_rgba(0,0,0,0.55)]" />
           </div>
           <div
             aria-hidden
-            className="absolute -right-3 -bottom-3 h-10 w-10 border-r-2 border-b-2 border-lime-400/70"
+            className="absolute -right-3 -bottom-3 h-10 w-10 border-r-2 border-b-2 border-sky-400/70"
           />
         </Reveal>
 
         <div>
           <p className="text-brand mb-3 font-mono text-xs font-medium tracking-[0.2em] uppercase">
-            // About Me
+            {'// About Me'}
           </p>
           <Reveal delay={0.05}>
             <h2 className="text-3xl font-bold text-balance sm:text-4xl">
@@ -56,7 +56,7 @@ export function About() {
               const Icon = statIcons[i] ?? Code2;
               return (
                 <div key={item.label} className="flex items-center gap-3">
-                  <span className="text-brand flex size-10 items-center justify-center rounded-lg border border-lime-400/30 bg-lime-400/10">
+                  <span className="text-brand flex size-10 items-center justify-center rounded-lg border border-sky-400/30 bg-sky-400/10">
                     <Icon className="size-4" />
                   </span>
                   <div>

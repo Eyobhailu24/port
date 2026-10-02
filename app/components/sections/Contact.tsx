@@ -93,7 +93,7 @@ export function Contact() {
                   rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   className="flex items-center gap-3 text-sm text-foreground/90 transition-colors hover:text-foreground"
                 >
-                  <span className="text-brand flex size-9 shrink-0 items-center justify-center rounded-lg border border-lime-400/30 bg-lime-400/10">
+                  <span className="text-brand flex size-9 shrink-0 items-center justify-center rounded-lg border border-sky-400/30 bg-sky-400/10">
                     <Icon className="size-4" />
                   </span>
                   <span>

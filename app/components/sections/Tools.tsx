@@ -13,7 +13,7 @@ export function Tools() {
     <section className="relative overflow-hidden px-6 py-16">
       <Reveal className="mx-auto mb-10 max-w-2xl text-center">
         <h3 className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">
-          <span className="text-brand">// </span>
+          <span className="text-brand">{'// '}</span>
           Tools &amp; Platforms I Work With
         </h3>
       </Reveal>

@@ -15,7 +15,7 @@ export function Testimonials() {
       <Reveal className="mx-auto max-w-xl">
         <Card className="glass-panel py-10 text-center">
           <CardContent className="flex flex-col items-center gap-3">
-            <span className="text-brand flex size-12 items-center justify-center rounded-lg border border-lime-400/30 bg-lime-400/10">
+            <span className="text-brand flex size-12 items-center justify-center rounded-lg border border-sky-400/30 bg-sky-400/10">
               <MessageSquareQuote className="size-5" />
             </span>
             <p className="font-medium">Client feedback coming soon.</p>

@@ -51,7 +51,7 @@ function WireframeGlobe() {
     <svg
       aria-hidden
       viewBox="0 0 400 400"
-      className="pointer-events-none absolute top-1/2 -right-16 h-[360px] w-[360px] -translate-y-1/2 text-lime-400 opacity-25 sm:h-[440px] sm:w-[440px]"
+      className="pointer-events-none absolute top-1/2 -right-16 h-[360px] w-[360px] -translate-y-1/2 text-sky-400 opacity-25 sm:h-[440px] sm:w-[440px]"
       fill="none"
       stroke="currentColor"
       strokeWidth="1"
@@ -72,7 +72,7 @@ function CodeWindow() {
       <div className="flex items-center gap-2 border-b border-border bg-muted/50 px-4 py-3">
         <span className="size-2.5 rounded-full bg-red-500/70" />
         <span className="size-2.5 rounded-full bg-yellow-500/70" />
-        <span className="size-2.5 rounded-full bg-green-500/70" />
+        <span className="size-2.5 rounded-full bg-sky-500/70" />
         <span className="ml-3 font-mono text-xs text-muted-foreground">
           eyob.profile.js
         </span>
@@ -111,7 +111,7 @@ function CodeWindow() {
           {'\n'}
           <span className="text-muted-foreground">09 </span>
           <span className="text-muted-foreground">
-            // Building real products, one commit at a time.
+            {'// Building real products, one commit at a time.'}
           </span>
         </code>
       </pre>
@@ -134,7 +134,7 @@ export function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={name}
-            className="text-muted-foreground transition-colors hover:text-lime-400"
+            className="text-muted-foreground transition-colors hover:text-sky-700 dark:hover:text-sky-400"
           >
             <Icon className="size-4" />
           </a>
@@ -191,7 +191,7 @@ export function Hero() {
             {...fadeUp(0.9)}
             className="mt-8 font-mono text-xs text-muted-foreground"
           >
-            <span className="text-brand">// </span>
+            <span className="text-brand">{'// '}</span>
             Currently focused on the MERN stack.
           </motion.p>
         </div>

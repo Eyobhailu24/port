@@ -28,9 +28,9 @@ export function Skills() {
           const Icon = icons[index] ?? Code2;
           return (
             <Reveal key={service.title} delay={staggerDelay(index)}>
-              <Card className="glass-panel h-full py-6 transition-colors hover:border-lime-400/50">
+              <Card className="glass-panel h-full py-6 transition-colors hover:border-sky-400/50">
                 <CardContent className="flex flex-col gap-4">
-                  <span className="text-brand flex size-10 items-center justify-center rounded-lg border border-lime-400/30 bg-lime-400/10">
+                  <span className="text-brand flex size-10 items-center justify-center rounded-lg border border-sky-400/30 bg-sky-400/10">
                     <Icon className="size-5" />
                   </span>
                   <div>

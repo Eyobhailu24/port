@@ -28,7 +28,7 @@ export function Projects() {
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project, index) => (
           <Reveal key={project.id} delay={staggerDelay(index)} className="group h-full">
-            <Card className="glass-panel h-full gap-0 overflow-hidden py-0 transition-colors hover:border-lime-400/50">
+            <Card className="glass-panel h-full gap-0 overflow-hidden py-0 transition-colors hover:border-sky-400/50">
               <div className="relative aspect-video overflow-hidden">
                 <Image
                   src={project.img}
