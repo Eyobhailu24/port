@@ -68,8 +68,8 @@ function WireframeGlobe() {
 
 function CodeWindow() {
   return (
-    <div className="relative overflow-hidden rounded-xl border border-border bg-card shadow-2xl shadow-black/20">
-      <div className="flex items-center gap-2 border-b border-border bg-muted/50 px-4 py-3">
+    <div className="glass-panel relative overflow-hidden">
+      <div className="flex items-center gap-2 px-4 py-3">
         <span className="size-2.5 rounded-full bg-red-500/70" />
         <span className="size-2.5 rounded-full bg-yellow-500/70" />
         <span className="size-2.5 rounded-full bg-sky-500/70" />

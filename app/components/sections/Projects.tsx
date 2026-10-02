@@ -28,15 +28,21 @@ export function Projects() {
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project, index) => (
           <Reveal key={project.id} delay={staggerDelay(index)} className="group h-full">
-            <Card className="glass-panel h-full gap-0 overflow-hidden py-0 transition-colors hover:border-sky-400/50">
+            <Card className="glass-panel h-full gap-0 overflow-hidden py-0 transition-transform duration-300 motion-safe:hover:-translate-y-1">
               <div className="relative aspect-video overflow-hidden">
-                <Image
-                  src={project.img}
-                  alt={project.title}
-                  fill
-                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+                {project.img ? (
+                  <Image
+                    src={project.img}
+                    alt={project.title}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                ) : (
+                  <div aria-hidden className="text-brand flex h-full items-center justify-center p-6 text-center text-2xl font-semibold">
+                    {project.title}
+                  </div>
+                )}
                 <Badge className="absolute top-3 left-3 font-mono text-[10px] tracking-wider uppercase">
                   Featured
                 </Badge>
@@ -50,16 +56,18 @@ export function Projects() {
                 <p className="text-sm text-muted-foreground">
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {project.stack.map((tech) => (
-                    <Badge key={tech} variant="secondary" className="font-mono">
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
+                {project.stack.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.stack.map((tech) => (
+                      <Badge key={tech} variant="secondary" className="font-mono">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                )}
               </CardContent>
 
-              <CardFooter className="!bg-transparent p-5 pt-0">
+              <CardFooter className="p-5 pt-0">
                 <Button asChild variant="outline" size="sm" className="w-full">
                   <a href={project.link} target="_blank" rel="noopener noreferrer">
                     Visit Live Site <ExternalLink className="size-3.5" />

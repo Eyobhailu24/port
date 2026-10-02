@@ -27,7 +27,6 @@ export const navItems = [
   { name: 'Skills', href: '#skills' },
   { name: 'Projects', href: '#projects' },
   { name: 'Experience', href: '#experience' },
-  { name: 'Testimonials', href: '#testimonials' },
   { name: 'Contact', href: '#contact' },
 ] as const;
 
@@ -43,6 +42,23 @@ export const skills = [
   { name: 'Hono', level: 89 },
   { name: 'Tailwind CSS', level: 85 },
   { name: 'Flutter', level: 78 },
+  { name: 'Express.js' },
+  { name: 'MongoDB' },
+  { name: 'Drizzle ORM' },
+  { name: 'Socket.io' },
+  { name: 'Django' },
+  { name: 'REST APIs' },
+  { name: 'NextAuth' },
+  { name: 'Context API' },
+  { name: 'React Native' },
+  { name: 'Python' },
+  { name: 'FastAPI' },
+  { name: 'shadcn/ui' },
+  { name: 'Dokploy' },
+  { name: 'Coolify' },
+  { name: 'AWS S3' },
+  { name: 'AWS Lambda' },
+  { name: 'OAuth' },
 ] as const;
 
 export const services = [
@@ -77,19 +93,19 @@ export type Project = {
   title: string;
   description: string;
   stack: string[];
-  img: string;
+  img?: string;
   link: string;
 };
 
 export const projects: Project[] = [
   {
     id: 1,
-    title: 'Flash Delivery',
+    title: 'Yehager Bahil Libs',
     description:
-      'A full-stack food delivery platform where users can browse restaurants, place orders, and track deliveries in real time. Includes dedicated interfaces for customers, restaurant managers, and delivery drivers, with order management, payment integration, and live status updates.',
-    stack: ['React', 'Node.js', 'Express', 'MongoDB', 'Socket.io', 'Tailwind CSS'],
-    img: '/flashde.jpg',
-    link: 'https://flash-delivery.onrender.com/',
+      'An online storefront for Ethiopian traditional clothing, bringing regional collections together in one shopping experience. Customers can explore styles, submit custom designs, and organize group orders, with tailored garments and worldwide shipping.',
+    stack: [],
+    img: '/image.png',
+    link: 'https://yehagerbahillibs.com/',
   },
   {
     id: 2,
@@ -145,8 +161,8 @@ export const experience: ExperienceItem[] = [
 export type Tool = {
   id: number;
   name: string;
-  logo: string;
-  wordmark: string;
+  logo?: string;
+  wordmark?: string;
 };
 
 export const tools: Tool[] = [
@@ -155,4 +171,9 @@ export const tools: Tool[] = [
   { id: 3, name: 'Hostinger', logo: '/host.svg', wordmark: '/hostName.svg' },
   { id: 4, name: 'Stream', logo: '/s.svg', wordmark: '/streamName.svg' },
   { id: 5, name: 'Docker', logo: '/dock.svg', wordmark: '/dockerName.svg' },
+  { id: 6, name: 'Dokploy' },
+  { id: 7, name: 'Coolify' },
+  { id: 8, name: 'AWS S3' },
+  { id: 9, name: 'AWS Lambda' },
+  { id: 10, name: 'Stripe' },
 ];

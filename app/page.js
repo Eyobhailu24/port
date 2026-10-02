@@ -9,25 +9,25 @@ import { Skills } from './components/sections/Skills';
 import { Tools } from './components/sections/Tools';
 import { Projects } from './components/sections/Projects';
 import { Experience } from './components/sections/Experience';
-import { Testimonials } from './components/sections/Testimonials';
 import { Contact } from './components/sections/Contact';
 
 export default function Page() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
+    <>
       <ScrollProgress />
       <Navbar />
-      <Hero />
-      <About />
-      <Education />
-      <Skills />
-      <Tools />
-      <Projects />
-      <Experience />
-      <Testimonials />
-      <Contact />
+      <main className="relative min-h-screen overflow-x-clip bg-background pt-24 text-foreground">
+        <Hero />
+        <About />
+        <Education />
+        <Skills />
+        <Tools />
+        <Projects />
+        <Experience />
+        <Contact />
+      </main>
       <Footer />
       <PortfolioChat />
-    </main>
+    </>
   );
 }

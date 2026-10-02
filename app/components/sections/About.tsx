@@ -2,6 +2,7 @@ import { Building2, Code2 } from 'lucide-react';
 import { highlights, profile } from '@/lib/content';
 import { Reveal } from '@/app/components/motion/Reveal';
 import { AmbientGlow } from '@/app/components/motion/AmbientGlow';
+import { SkillsMarquee } from './SkillsMarquee';
 
 const statIcons = [Code2, Building2];
 
@@ -12,11 +13,7 @@ export function About() {
 
       <div className="mx-auto grid max-w-5xl grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,340px)_1fr] lg:gap-16">
         <Reveal from="left" className="relative mx-auto w-full max-w-xs lg:mx-0">
-          <div
-            aria-hidden
-            className="absolute -top-3 -left-3 h-10 w-10 border-t-2 border-l-2 border-sky-400/70"
-          />
-          <div className="relative aspect-[4/5] overflow-hidden rounded-xl border border-border">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
             <img
               src={profile.avatar}
               alt={profile.name}
@@ -25,10 +22,6 @@ export function About() {
             <div className="absolute inset-0 bg-sky-500/15 mix-blend-color" />
             <div className="absolute inset-0 shadow-[inset_0_0_100px_40px_rgba(0,0,0,0.55)]" />
           </div>
-          <div
-            aria-hidden
-            className="absolute -right-3 -bottom-3 h-10 w-10 border-r-2 border-b-2 border-sky-400/70"
-          />
         </Reveal>
 
         <div>
@@ -50,13 +43,13 @@ export function About() {
 
           <Reveal
             delay={0.25}
-            className="mt-8 flex flex-wrap gap-x-10 gap-y-4 border-t border-border pt-8"
+            className="mt-8 flex flex-wrap gap-x-10 gap-y-4 pt-4"
           >
             {highlights.map((item, i) => {
               const Icon = statIcons[i] ?? Code2;
               return (
                 <div key={item.label} className="flex items-center gap-3">
-                  <span className="text-brand flex size-10 items-center justify-center rounded-lg border border-sky-400/30 bg-sky-400/10">
+                  <span className="text-brand flex size-10 items-center justify-center rounded-lg bg-sky-400/10">
                     <Icon className="size-4" />
                   </span>
                   <div>
@@ -69,6 +62,7 @@ export function About() {
           </Reveal>
         </div>
       </div>
+      <SkillsMarquee />
     </section>
   );
 }

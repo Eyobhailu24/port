@@ -11,7 +11,7 @@ export function Education() {
         {education.map((item) => (
           <Reveal key={item.institution}>
             <div className="glass-panel flex items-start gap-5 p-6 sm:p-8">
-              <span className="text-brand flex size-12 shrink-0 items-center justify-center rounded-lg border border-sky-400/30 bg-sky-400/10">
+              <span className="text-brand flex size-12 shrink-0 items-center justify-center rounded-lg bg-sky-400/10">
                 <GraduationCap aria-hidden className="size-6" />
               </span>
               <div>

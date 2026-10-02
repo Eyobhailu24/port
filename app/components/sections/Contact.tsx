@@ -93,7 +93,7 @@ export function Contact() {
                   rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   className="flex items-center gap-3 text-sm text-foreground/90 transition-colors hover:text-foreground"
                 >
-                  <span className="text-brand flex size-9 shrink-0 items-center justify-center rounded-lg border border-sky-400/30 bg-sky-400/10">
+                  <span className="text-brand flex size-9 shrink-0 items-center justify-center rounded-lg bg-sky-400/10">
                     <Icon className="size-4" />
                   </span>
                   <span>
@@ -103,7 +103,7 @@ export function Contact() {
                 </a>
               ))}
 
-              <div className="mt-2 border-t border-border pt-4 text-sm">
+              <div className="mt-2 pt-4 text-sm">
                 <span className="block text-xs text-muted-foreground">Location</span>
                 {profile.location}
               </div>
