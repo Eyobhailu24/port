@@ -148,10 +148,10 @@ export function PortfolioChat() {
               close();
             }
           }}
-          className="flex h-[min(36rem,calc(100dvh-7rem))] w-[calc(100vw-2rem)] max-w-sm flex-col overflow-hidden rounded-2xl border border-sky-500/30 bg-card text-card-foreground shadow-2xl shadow-black/20"
+          className="flex h-[min(36rem,calc(100dvh-7rem))] w-[calc(100vw-2rem)] max-w-sm flex-col overflow-hidden rounded-2xl bg-card/95 text-card-foreground shadow-2xl shadow-black/20 backdrop-blur-xl"
         >
-          <header className="flex items-center gap-3 border-b border-border bg-accent/40 px-4 py-4">
-            <span className="text-brand flex size-10 shrink-0 items-center justify-center rounded-xl border border-sky-400/30 bg-sky-400/10">
+          <header className="flex items-center gap-3 bg-accent/40 px-4 py-4">
+            <span className="text-brand flex size-10 shrink-0 items-center justify-center rounded-xl bg-sky-400/10">
               <Sparkles aria-hidden className="size-5" />
             </span>
             <div className="min-w-0 flex-1">
@@ -205,7 +205,7 @@ export function PortfolioChat() {
             data-lenis-prevent
             className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain p-4"
           >
-            <div className="rounded-xl rounded-tl-sm border border-border bg-muted/40 p-3.5 text-sm leading-relaxed">
+            <div className="rounded-xl rounded-tl-sm bg-surface p-3.5 text-sm leading-relaxed">
               Hi! Explore Eyob&apos;s work, education, and
               the technologies he uses. What would you like
               to know?
@@ -216,7 +216,7 @@ export function PortfolioChat() {
                   <button
                     key={text}
                     onClick={() => send(text)}
-                    className="text-brand rounded-lg border border-sky-500/25 px-3 py-2 text-left text-xs transition-colors hover:bg-accent focus-visible:outline-2 focus-visible:outline-ring"
+                    className="text-brand rounded-lg bg-control px-3 py-2 text-left text-xs transition-colors hover:bg-control-hover focus-visible:outline-2 focus-visible:outline-ring"
                   >
                     {text}{' '}
                     <ArrowUpRight
@@ -240,7 +240,7 @@ export function PortfolioChat() {
                     : 'Assistant'}
                 </p>
                 <p
-                  className={`whitespace-pre-wrap break-words rounded-xl p-3.5 text-sm leading-relaxed ${message.role === 'user' ? 'rounded-tr-sm bg-primary text-primary-foreground' : 'rounded-tl-sm border border-border bg-muted/40'}`}
+                  className={`whitespace-pre-wrap break-words rounded-xl p-3.5 text-sm leading-relaxed ${message.role === 'user' ? 'rounded-tr-sm bg-primary text-primary-foreground' : 'rounded-tl-sm bg-surface'}`}
                 >
                   {message.content}
                 </p>
@@ -254,7 +254,7 @@ export function PortfolioChat() {
                         key={source.href}
                         href={source.href}
                         onClick={close}
-                        className="text-brand rounded-md border border-border px-2 py-1 text-[11px] hover:bg-accent focus-visible:outline-2 focus-visible:outline-ring"
+                        className="text-brand rounded-md bg-control px-2 py-1 text-[11px] transition-colors hover:bg-control-hover focus-visible:outline-2 focus-visible:outline-ring"
                       >
                         {source.title}
                         <ArrowUpRight
@@ -288,7 +288,7 @@ export function PortfolioChat() {
             {error && (
               <div
                 role="alert"
-                className="rounded-xl border border-border bg-muted/40 p-3 text-sm"
+                className="rounded-xl bg-surface p-3 text-sm"
               >
                 <p>{error}</p>
                 <div className="mt-3 flex gap-3">
@@ -312,13 +312,13 @@ export function PortfolioChat() {
           </div>
 
           <form
-            className="border-t border-border p-3"
+            className="p-3"
             onSubmit={(event) => {
               event.preventDefault();
               send(draft);
             }}
           >
-            <div className="flex items-end gap-2 rounded-xl border border-input bg-background p-2 focus-within:ring-2 focus-within:ring-ring/50">
+            <div className="flex items-end gap-2 rounded-xl bg-control p-2 transition-colors focus-within:bg-control-hover focus-within:ring-2 focus-within:ring-ring/50">
               <label
                 htmlFor="chat-message"
                 className="sr-only"
@@ -336,7 +336,7 @@ export function PortfolioChat() {
                 }
                 placeholder="Ask about my work…"
                 aria-describedby="chat-privacy"
-                className="max-h-28 min-h-12 flex-1 resize-none bg-transparent px-1 py-1 text-base outline-none placeholder:text-muted-foreground sm:text-sm"
+                className="max-h-28 min-h-12 min-w-0 flex-1 resize-none border-0 bg-transparent px-1 py-1 text-base outline-none placeholder:text-muted-foreground sm:text-sm"
                 onKeyDown={(event) => {
                   if (
                     event.key === 'Enter' &&

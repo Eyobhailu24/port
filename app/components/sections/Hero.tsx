@@ -243,7 +243,6 @@ export function Hero() {
             className="mt-8 font-mono text-xs text-muted-foreground"
           >
             <span className="text-brand">{'// '}</span>
-            Currently focused on the MERN stack.
           </motion.p>
         </div>
 

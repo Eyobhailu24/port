@@ -127,8 +127,22 @@ export const projects: Project[] = [
     id: 1,
     title: 'Yehager Bahil Libs',
     description:
-      'An online storefront for Ethiopian traditional clothing, bringing regional collections together in one shopping experience. Customers can explore styles, submit custom designs, and organize group orders, with tailored garments and worldwide shipping.',
-    stack: [],
+      'An e-commerce platform for Ethiopian traditional clothing, with regional collections, custom design uploads, group orders, secure checkout, and worldwide shipping.',
+    stack: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'Hono',
+      'PostgreSQL',
+      'Drizzle ORM',
+      'Kysely',
+      'TanStack Query',
+      'Stripe',
+      'NextAuth',
+      'Google OAuth',
+      'Cloudinary',
+    ],
     img: '/image.png',
     link: 'https://yehagerbahillibs.com/',
   },
@@ -143,12 +157,12 @@ export const projects: Project[] = [
   },
   {
     id: 3,
-    title: 'Atomic Blog',
+    title: 'Eyob & Biruh Foundation',
     description:
-      'A fast, responsive blogging platform built with React, using the Context API for clean global state management, smooth client-side navigation, and efficient content rendering.',
-    stack: ['React', 'Context API'],
-    img: '/ablog.jpg',
-    link: 'https://atomic-blog-peach-seven.vercel.app/',
+      'A charity foundation website highlighting food, medical care, clothing, and education programs for street children in Addis Ababa. Visitors can explore the foundation\'s mission, discover its programs, and get in touch.',
+    stack: [],
+    img: '/charity.png',
+    link: 'https://eandbfoundation.org/',
   },
 ];
 

@@ -55,7 +55,7 @@ export async function POST(request: Request) {
   if (!messages) return error('Please send a message of up to 1,200 characters.', 400);
   const records = retrieveDocuments(knowledge, messages);
   if (!records.length) {
-    return Response.json({ answer: "I can help with Eyob’s projects, education, skills, and work experience. I don’t have that information in his portfolio. For more details, please contact Eyob.", sources: [{ title: 'Contact Eyob', href: '#contact' }] }, { headers });
+    return Response.json({ answer: "I can help with Eyob’s projects, education, skills, and work experience. I don’t have that information. For more details, please contact Eyob.", sources: [{ title: 'Contact Eyob', href: '#contact' }] }, { headers });
   }
 
   const key = process.env.XKIRO_API_KEY;
@@ -82,12 +82,12 @@ export async function POST(request: Request) {
       cache: 'no-store',
       redirect: 'error',
     });
-    if (!response.ok) return error('The assistant could not respond. Please try again shortly or contact Eyob.', 502);
+    if (!response.ok) return error('I could not respond. Please try again shortly or contact Eyob.', 502);
     const result = await response.json();
     const choice = result?.choices?.[0];
     const answer = choice?.message?.content;
     if (typeof answer !== 'string' || !answer.trim() || choice.finish_reason !== 'stop') {
-      return error('The assistant could not finish its reply. Please try a more specific question.', 502);
+      return error('I could not finish my reply. Please try a more specific question.', 502);
     }
     const sources = [...new Map(records.map((record) => [record.href, { title: record.href === '#projects' ? 'Projects' : record.href === '#experience' ? 'Experience' : record.title, href: record.href }])).values()];
     return Response.json({ answer: answer.trim().slice(0, 1200), sources }, { headers });

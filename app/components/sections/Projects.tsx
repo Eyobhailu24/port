@@ -28,8 +28,8 @@ export function Projects() {
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project, index) => (
           <Reveal key={project.id} delay={staggerDelay(index)} className="group h-full">
-            <Card className="glass-panel h-full gap-0 overflow-hidden py-0 transition-transform duration-300 motion-safe:hover:-translate-y-1">
-              <div className="relative aspect-video overflow-hidden">
+            <Card className="glass-panel h-full gap-0 overflow-hidden py-0 [--card-spacing:--spacing(5)] transition-transform duration-300 motion-safe:hover:-translate-y-1">
+              <div className="relative aspect-video shrink-0 overflow-hidden">
                 {project.img ? (
                   <Image
                     src={project.img}
@@ -48,7 +48,7 @@ export function Projects() {
                 </Badge>
               </div>
 
-              <CardHeader className="pt-5">
+              <CardHeader className="pt-5 pb-2">
                 <CardTitle>{project.title}</CardTitle>
               </CardHeader>
 
@@ -67,8 +67,8 @@ export function Projects() {
                 )}
               </CardContent>
 
-              <CardFooter className="p-5 pt-0">
-                <Button asChild variant="outline" size="sm" className="w-full">
+              <CardFooter className="px-5 pt-6 pb-5">
+                <Button asChild variant="outline" className="h-10 w-full">
                   <a href={project.link} target="_blank" rel="noopener noreferrer">
                     Visit Live Site <ExternalLink className="size-3.5" />
                   </a>

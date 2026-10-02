@@ -158,7 +158,7 @@ export function LogoMarquee({ label, items, duration = 40 }: LogoMarqueeProps) {
           type="button"
           onClick={() => setPaused((value) => !value)}
           aria-label={`${paused ? 'Resume' : 'Pause'} ${label.toLowerCase()} animation`}
-          className="inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-xs text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          className="inline-flex items-center gap-1.5 rounded-full bg-control px-3 py-2 text-xs text-muted-foreground transition-colors hover:bg-control-hover hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
         >
           {paused ? <Play aria-hidden className="size-3" /> : <Pause aria-hidden className="size-3" />}
           {paused ? 'Resume' : 'Pause'}

@@ -50,7 +50,7 @@ export function Footer() {
               rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
               aria-label={name}
               title={name}
-              className="flex size-9 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:border-sky-400/50 hover:text-sky-700 dark:hover:text-sky-400"
+              className="flex size-9 items-center justify-center rounded-lg bg-control text-muted-foreground transition-colors hover:bg-control-hover hover:text-sky-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring dark:hover:text-sky-400"
             >
               <Icon className="size-4" />
             </a>
