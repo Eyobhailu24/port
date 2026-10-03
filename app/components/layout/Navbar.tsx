@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ArrowUpRight, Menu } from 'lucide-react';
+import { ArrowUpRight, MapPin, Menu, X } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 import { navItems, profile } from '@/lib/content';
 import { Button } from '@/components/ui/button';
@@ -105,34 +105,49 @@ export function Navbar() {
                 <Menu className="size-4" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="border-0 bg-background">
-              <SheetHeader>
-                <SheetTitle className="font-mono">
-                  {initials}
-                  <span className="text-brand">_</span>
-                </SheetTitle>
-                <SheetDescription>Explore my work and get in touch.</SheetDescription>
+            <SheetContent side="right" showCloseButton={false} className="mobile-nav-panel" overlayClassName="mobile-nav-overlay" data-lenis-prevent>
+              <div aria-hidden className="pointer-events-none absolute -top-24 -right-24 size-64 rounded-full bg-primary/10 blur-3xl" />
+              <SheetHeader className="relative px-6 pt-7 pb-4">
+                <div className="mb-8 flex items-center justify-between">
+                  <span className="font-mono text-2xl font-semibold">{initials}<span className="text-brand">_</span></span>
+                  <div className="flex items-center gap-2">
+                    <ThemeToggle />
+                    <SheetClose asChild>
+                      <Button variant="ghost" size="icon" className="rounded-full" aria-label="Close menu"><X aria-hidden className="size-4" /></Button>
+                    </SheetClose>
+                  </div>
+                </div>
+                <SheetTitle className="text-2xl font-semibold tracking-tight">Take a look around.</SheetTitle>
+                <SheetDescription className="mt-1.5 text-sm">A little about me, and what I build.</SheetDescription>
               </SheetHeader>
-              <nav aria-label="Mobile navigation" className="flex flex-col gap-1 px-4">
-                {navItems.map((item) => (
-                  <SheetClose asChild key={item.href}>
-                    <a
-                      href={item.href}
-                      aria-current={activeSection === item.href ? 'location' : undefined}
-                      className="rounded-xl px-3 py-3 font-mono text-sm text-foreground/90 uppercase transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-ring aria-[current=location]:bg-accent aria-[current=location]:text-primary"
-                    >
-                      {item.name}
-                    </a>
-                  </SheetClose>
-                ))}
+              <nav aria-label="Mobile navigation" className="relative px-4">
+                <motion.ul initial={reduceMotion ? false : 'hidden'} animate="visible" variants={{ hidden: {}, visible: { transition: { staggerChildren: reduceMotion ? 0 : 0.055, delayChildren: reduceMotion ? 0 : 0.08 } } }} className="space-y-1.5">
+                  {navItems.map((item, index) => (
+                    <motion.li key={item.href} variants={{ hidden: { opacity: 0, x: 16 }, visible: { opacity: 1, x: 0, transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] } } }}>
+                      <SheetClose asChild>
+                        <a
+                          href={item.href}
+                          aria-current={activeSection === item.href ? 'location' : undefined}
+                          className="group flex min-h-14 items-center gap-4 rounded-2xl px-4 py-3 text-foreground/90 transition-colors hover:bg-control/60 focus-visible:outline-2 focus-visible:outline-ring aria-[current=location]:bg-primary/10 aria-[current=location]:text-primary"
+                        >
+                          <span className="font-mono text-[10px] text-muted-foreground group-aria-[current=location]:text-primary">{String(index + 1).padStart(2, '0')}</span>
+                          <span className="flex-1 text-lg font-medium tracking-tight">{item.name}</span>
+                          <ArrowUpRight aria-hidden className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-aria-[current=location]:text-primary motion-reduce:transition-none" />
+                        </a>
+                      </SheetClose>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </nav>
+              <div className="relative mt-auto px-6 pt-8 pb-6">
+                <p className="mb-3 text-sm text-muted-foreground">Have something in mind?</p>
                 <SheetClose asChild>
-                  <Button asChild className="mt-2">
-                    <a href="#contact">
-                      Let&apos;s Talk <ArrowUpRight className="size-3.5" />
-                    </a>
+                  <Button asChild className="h-12 w-full justify-between rounded-2xl px-4">
+                    <a href="#contact">Let&apos;s Talk <ArrowUpRight aria-hidden className="size-4" /></a>
                   </Button>
                 </SheetClose>
-              </nav>
+                <p className="mt-4 flex items-center gap-1.5 text-xs text-muted-foreground"><MapPin aria-hidden className="size-3" />{profile.location}</p>
+              </div>
             </SheetContent>
           </Sheet>
         </div>

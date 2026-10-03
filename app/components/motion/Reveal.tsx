@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, type Variants } from 'motion/react';
+import { motion, useReducedMotion, type Variants } from 'motion/react';
 import type { ReactNode } from 'react';
 
 type RevealProps = {
@@ -40,13 +40,14 @@ export function Reveal({
   from = 'up',
   as = 'div',
 }: RevealProps) {
+  const reduceMotion = useReducedMotion();
   const variants: Variants = {
     hidden: getInitial(from),
     visible: {
       opacity: 1,
       y: 0,
       x: 0,
-      transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: reduceMotion ? 0 : 0.6, delay: reduceMotion ? 0 : delay, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
@@ -55,7 +56,7 @@ export function Reveal({
   return (
     <MotionTag
       className={className}
-      initial="hidden"
+      initial={reduceMotion ? false : 'hidden'}
       whileInView="visible"
       viewport={{ once: true, margin: '-80px' }}
       variants={variants}

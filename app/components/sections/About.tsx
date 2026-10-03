@@ -1,7 +1,6 @@
 import { Building2, Code2 } from 'lucide-react';
 import { highlights, profile } from '@/lib/content';
 import { Reveal } from '@/app/components/motion/Reveal';
-import { AmbientGlow } from '@/app/components/motion/AmbientGlow';
 import { SkillsMarquee } from './SkillsMarquee';
 
 const statIcons = [Code2, Building2];
@@ -9,8 +8,6 @@ const statIcons = [Code2, Building2];
 export function About() {
   return (
     <section id="about" className="relative px-6 py-24 md:py-32">
-      <AmbientGlow variant="subtle" className="-z-10" />
-
       <div className="mx-auto grid max-w-5xl grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,340px)_1fr] lg:gap-16">
         <Reveal from="left" className="relative mx-auto w-full max-w-xs lg:mx-0">
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">

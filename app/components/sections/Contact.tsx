@@ -19,7 +19,6 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Reveal } from '@/app/components/motion/Reveal';
-import { AmbientGlow } from '@/app/components/motion/AmbientGlow';
 import { SectionHeading } from '@/app/components/motion/SectionHeading';
 
 const contactLinks = [
@@ -71,7 +70,6 @@ export function Contact() {
 
   return (
     <section id="contact" className="relative px-6 py-24 md:py-32">
-      <AmbientGlow variant="subtle" className="-z-10" />
       <SectionHeading
         eyebrow="Contact"
         title="Let's build something together."

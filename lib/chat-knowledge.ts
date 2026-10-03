@@ -1,4 +1,4 @@
-import { education, experience, profile, projects, services, skills, tools } from './content';
+import { education, experience, formatExperienceDate, profile, projects, services, skills, tools } from './content';
 
 export const knowledge = [
   {
@@ -11,8 +11,8 @@ export const knowledge = [
     text: `${item.degree ? `${item.degree}, ` : ''}${item.institution}. Status: ${item.status}. ${item.period ? `Study period: ${item.period}.` : 'Enrollment and graduation dates are not recorded.'} ${item.degree ? '' : 'The degree or program is not recorded. '}Grades and certifications are not recorded.`,
   })),
   ...experience.map((item) => ({
-    title: `${item.role} at ${item.company}`, href: '#experience', keywords: 'work worked job career company employer employment experience role',
-    text: `${item.role} at ${item.company}. ${item.description} Employment dates and current employment status are not recorded.`,
+    title: `${item.role} at ${item.company}`, href: '#experience', keywords: 'work worked job career company employer employment experience role internship intern dates timeline when location',
+    text: `${item.role} at ${item.company}. ${item.kind}. ${formatExperienceDate(item.startDate)} to ${formatExperienceDate(item.endDate)}. Location: ${item.location}. ${item.highlights.join(' ')} Technologies: ${item.stack.join(', ')}. This role ended in ${formatExperienceDate(item.endDate)}; current employment elsewhere is not recorded.`,
   })),
   ...projects.map((item) => ({
     title: item.title, href: '#projects', keywords: 'project portfolio build built app application demo development',

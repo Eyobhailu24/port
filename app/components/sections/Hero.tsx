@@ -1,11 +1,11 @@
 'use client';
 
-import { motion, type Variants } from 'motion/react';
+import { motion, useReducedMotion, type Variants } from 'motion/react';
 import { ArrowRight, Download } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { profile } from '@/lib/content';
 import { Button } from '@/components/ui/button';
-import { AmbientGlow } from '@/app/components/motion/AmbientGlow';
+import { usePortfolioReady } from '@/app/components/motion/PortfolioIntro';
 
 const socials = [
   { name: 'GitHub', href: profile.github, icon: FaGithub },
@@ -39,23 +39,25 @@ const word: Variants = {
   },
 };
 
-const fadeUp = (delay: number) => ({
-  initial: { opacity: 0, y: 16 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, delay },
+const fadeUp = (delay: number, ready: boolean, reduceMotion: boolean | null) => ({
+  initial: false as const,
+  animate: ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 },
+  transition: { duration: reduceMotion ? 0 : 0.5, delay: ready && !reduceMotion ? delay : 0 },
 });
 
 function Headline({ text }: { text: string }) {
+  const ready = usePortfolioReady();
+  const reduceMotion = useReducedMotion();
   return (
     <motion.span
       variants={container}
-      initial="hidden"
-      animate="visible"
+      initial={false}
+      animate={ready ? 'visible' : 'hidden'}
     >
       {text.split(' ').map((w, i) => (
         <motion.span
           key={i}
-          variants={word}
+          variants={reduceMotion ? { hidden: { opacity: 1, y: 0, filter: 'none' }, visible: { opacity: 1, y: 0, filter: 'none' } } : word}
           className="inline-block"
         >
           {w}&nbsp;
@@ -88,7 +90,7 @@ function WireframeGlobe() {
 
 function CodeWindow() {
   return (
-    <div className="glass-panel relative overflow-hidden">
+    <div className="hero-code-panel relative overflow-hidden rounded-2xl">
       <div className="flex items-center gap-2 px-4 py-3">
         <span className="size-2.5 rounded-full bg-red-500/70" />
         <span className="size-2.5 rounded-full bg-yellow-500/70" />
@@ -162,13 +164,13 @@ function CodeWindow() {
 }
 
 export function Hero() {
+  const ready = usePortfolioReady();
+  const reduceMotion = useReducedMotion();
   return (
     <section
       id="Home"
-      className="relative overflow-hidden border-b border-border"
+      className="relative overflow-hidden"
     >
-      <AmbientGlow variant="hero" />
-
       {/* Vertical social rail — desktop only */}
       <div className="absolute top-1/2 left-6 hidden -translate-y-1/2 flex-col items-center gap-5 lg:flex">
         <span className="h-14 w-px bg-border" />
@@ -187,17 +189,17 @@ export function Hero() {
         <span className="h-14 w-px bg-border" />
       </div>
 
-      <div className="relative z-10 mx-auto grid max-w-6xl gap-16 px-6 py-20 lg:grid-cols-2 lg:items-center lg:gap-12 lg:py-28">
+      <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 gap-16 px-6 py-20 lg:grid-cols-2 lg:items-center lg:gap-12 lg:py-28">
         {/* Text column */}
         <div>
           <motion.p
-            {...fadeUp(0)}
+            {...fadeUp(0, ready, reduceMotion)}
             className="text-brand mb-4 font-mono text-sm"
           >
             &lt; Hello, I&apos;m /&gt;
           </motion.p>
 
-          <h1 className="text-4xl leading-[1.05] font-bold tracking-tight text-balance uppercase sm:text-5xl md:text-6xl">
+          <h1 id="hero-heading" tabIndex={-1} className="text-4xl leading-[1.05] font-bold tracking-tight text-balance uppercase outline-none sm:text-5xl md:text-6xl">
             <Headline text="Eyob" />
             <span className="text-brand">
               <Headline text="Hailu" />
@@ -205,14 +207,14 @@ export function Hero() {
           </h1>
 
           <motion.p
-            {...fadeUp(0.5)}
+            {...fadeUp(0.3, ready, reduceMotion)}
             className="mt-4 font-mono text-sm tracking-widest text-muted-foreground uppercase"
           >
             Full-Stack Developer
           </motion.p>
 
           <motion.p
-            {...fadeUp(0.6)}
+            {...fadeUp(0.4, ready, reduceMotion)}
             className="mt-5 max-w-md text-sm text-muted-foreground sm:text-base"
           >
             I build fast, reliable web apps from front end
@@ -221,7 +223,7 @@ export function Hero() {
           </motion.p>
 
           <motion.div
-            {...fadeUp(0.75)}
+            {...fadeUp(0.5, ready, reduceMotion)}
             className="mt-8 flex flex-wrap items-center gap-4"
           >
             <Button asChild size="lg">
@@ -239,7 +241,7 @@ export function Hero() {
           </motion.div>
 
           <motion.p
-            {...fadeUp(0.9)}
+            {...fadeUp(0.6, ready, reduceMotion)}
             className="mt-8 font-mono text-xs text-muted-foreground"
           >
             <span className="text-brand">{'// '}</span>
@@ -248,14 +250,14 @@ export function Hero() {
 
         {/* Code window column */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={false}
+          animate={ready ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.96 }}
           transition={{
-            duration: 0.7,
-            delay: 0.2,
+            duration: reduceMotion ? 0 : 0.7,
+            delay: ready && !reduceMotion ? 0.2 : 0,
             ease: [0.16, 1, 0.3, 1],
           }}
-          className="relative"
+          className="relative min-w-0"
         >
           <WireframeGlobe />
           <CodeWindow />

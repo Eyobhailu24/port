@@ -103,6 +103,8 @@
     --control: oklch(0.925 0.014 235 / 75%);
     --control-hover: oklch(0.895 0.024 235 / 85%);
     --surface-shadow: 0 8px 28px -12px rgb(15 23 42 / 12%);
+    --hero-surface: oklch(0.94 0.013 235 / 50%);
+    --drawer-surface: oklch(0.985 0.007 235 / 78%);
     --popover: oklch(1 0 0);
     --popover-foreground: oklch(0.145 0 0);
     --primary: oklch(0.5 0.12 235);
@@ -142,6 +144,8 @@
     --control: oklch(0.32 0.018 235 / 75%);
     --control-hover: oklch(0.38 0.025 235 / 85%);
     --surface-shadow: 0 10px 30px -12px rgb(0 0 0 / 40%);
+    --hero-surface: oklch(0.26 0.02 235 / 45%);
+    --drawer-surface: oklch(0.20 0.018 235 / 74%);
     --popover: oklch(0.17 0 0);
     --popover-foreground: oklch(0.985 0 0);
     --primary: oklch(0.746 0.16 232.66);
@@ -206,6 +210,82 @@
   transition: background-color 350ms ease, box-shadow 350ms ease;
 }
 
+.hero-code-panel {
+  background: var(--hero-surface);
+  box-shadow: var(--surface-shadow);
+}
+
+.timeline-milestone {
+  background: var(--muted);
+  transition: background-color 600ms ease, box-shadow 600ms ease;
+}
+
+.timeline-milestone[data-active='true'] {
+  background: var(--primary);
+  box-shadow: 0 0 0 6px color-mix(in oklab, var(--primary) 10%, transparent),
+    0 0 24px color-mix(in oklab, var(--primary) 20%, transparent);
+}
+
+.mobile-nav-overlay {
+  background: rgb(0 0 0 / 12%);
+  backdrop-filter: blur(3px);
+}
+
+.mobile-nav-panel[data-side='right'] {
+  top: max(0.75rem, env(safe-area-inset-top));
+  right: 0.75rem;
+  bottom: max(0.75rem, env(safe-area-inset-bottom));
+  width: min(calc(100vw - 1.5rem), 24rem);
+  max-width: none;
+  height: auto;
+  gap: 0.75rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 0;
+  border-radius: 1.75rem;
+  background: var(--drawer-surface);
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  box-shadow: 0 24px 80px -20px rgb(0 0 0 / 30%);
+  animation: drawer-arrive 450ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.mobile-nav-panel[data-state='closed'] {
+  animation: drawer-depart 220ms ease-in both;
+}
+
+.intro-screen,
+.intro-overlay {
+  animation: intro-arrive 180ms ease-out both;
+}
+
+.intro-screen[data-state='closed'],
+.intro-overlay[data-state='closed'] {
+  pointer-events: none;
+  animation: intro-depart 400ms ease-in-out both;
+}
+
+@keyframes drawer-arrive {
+  from { opacity: 0; transform: translateX(calc(100% + 1rem)); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes drawer-depart {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(calc(100% + 1rem)); }
+}
+
+@keyframes intro-arrive {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes intro-depart {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
 .navbar-shell[data-scrolled='true'] {
   background: color-mix(in oklab, var(--background) 88%, transparent);
   box-shadow: 0 14px 45px -16px rgb(15 23 42 / 22%);
@@ -267,6 +347,18 @@
   }
 
   .navbar-shell {
+    transition: none;
+  }
+
+  .timeline-milestone {
+    transition: none;
+  }
+
+  .mobile-nav-panel[data-side='right'],
+  .mobile-nav-overlay,
+  .intro-screen,
+  .intro-overlay {
+    animation-duration: 1ms;
     transition: none;
   }
 

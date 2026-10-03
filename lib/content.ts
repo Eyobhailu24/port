@@ -160,7 +160,7 @@ export const projects: Project[] = [
     title: 'Eyob & Biruh Foundation',
     description:
       'A charity foundation website highlighting food, medical care, clothing, and education programs for street children in Addis Ababa. Visitors can explore the foundation\'s mission, discover its programs, and get in touch.',
-    stack: [],
+    stack: ['Next.js', 'Tailwind CSS', 'shadcn/ui'],
     img: '/charity.png',
     link: 'https://eandbfoundation.org/',
   },
@@ -170,30 +170,65 @@ export type ExperienceItem = {
   id: number;
   role: string;
   company: string;
-  description: string;
+  kind: 'Professional experience' | 'Internship';
+  startDate: string;
+  endDate: string;
+  location: string;
+  highlights: string[];
+  stack: string[];
 };
+
+export function formatExperienceDate(value: string) {
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short', year: 'numeric', timeZone: 'UTC',
+  }).format(new Date(`${value}-01T00:00:00Z`));
+}
 
 export const experience: ExperienceItem[] = [
   {
-    id: 1,
-    role: 'Mid-Level Developer',
-    company: 'Abugida Robotics',
-    description:
-      'Connected an Arduino device to a Flutter mobile app over Bluetooth, using a Bluetooth module and the flutter_bluetooth_serial package. Programmed the Arduino to collect temperature sensor data and control a fan and heater, streaming their status to the app in real time. On the Flutter side, built a responsive UI showing average, minimum, and maximum temperature alongside live fan and heater status.',
+    id: 3,
+    role: 'Senior Full-Stack Developer',
+    company: 'A and B Consultancy',
+    kind: 'Professional experience',
+    startDate: '2026-02',
+    endDate: '2026-08',
+    location: 'Addis Ababa, Ethiopia',
+    highlights: [
+      'Contributed to a B2B car dealership platform, a charity website, and a property management website.',
+      'Built web applications using Next.js, Hono, Django, and NestJS, with shadcn/ui for the interfaces.',
+      'Worked with cloud services and application deployment using AWS S3, AWS Lambda, Hostinger, Dokploy, and Coolify.',
+    ],
+    stack: ['Next.js', 'Hono', 'Django', 'NestJS', 'shadcn/ui', 'AWS S3', 'AWS Lambda', 'Hostinger', 'Dokploy', 'Coolify'],
   },
   {
     id: 2,
     role: 'Full-Stack Developer',
     company: 'Muyalogy',
-    description:
-      'Contributing to a comprehensive HR system, using Next.js and shadcn/ui for the frontend and Hono for the backend API, with Drizzle ORM for efficient database management.',
+    kind: 'Internship',
+    startDate: '2025-12',
+    endDate: '2026-01',
+    location: 'Addis Ababa, Ethiopia',
+    highlights: [
+      'Contributed to building a full ERP system from scratch using Next.js and Hono.',
+      'Developed frontend features with Next.js and backend APIs with Hono.',
+      'Used Cloudflare\'s S3-compatible storage for files and OpenAPI for API specifications and documentation.',
+    ],
+    stack: ['Next.js', 'Hono', 'Cloudflare Storage', 'OpenAPI'],
   },
   {
-    id: 3,
-    role: 'Full-Stack Developer',
-    company: 'A and B Consultancy',
-    description:
-      'Developing a B2B (business-to-business) platform, using Django for the backend and Next.js for the frontend.',
+    id: 1,
+    role: 'Mid-Level Developer',
+    company: 'Abugida Robotics',
+    kind: 'Internship',
+    startDate: '2024-11',
+    endDate: '2024-12',
+    location: 'Addis Ababa, Ethiopia',
+    highlights: [
+      'Connected an Arduino device to a Flutter app over Bluetooth using a Bluetooth module and flutter_bluetooth_serial.',
+      'Programmed temperature sensing and fan/heater control, streaming device status to the app in real time.',
+      'Built a responsive interface for average, minimum, and maximum temperatures and live device status; debugged data parsing and optimized incoming updates.',
+    ],
+    stack: ['Flutter', 'Arduino', 'Bluetooth', 'flutter_bluetooth_serial'],
   },
 ];
 

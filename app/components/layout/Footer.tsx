@@ -17,7 +17,7 @@ const initials = profile.name
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-border">
+    <footer className="relative">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-6 py-8 lg:flex-row lg:justify-between">
         <div className="flex items-center gap-3">
           <span className="font-mono text-base font-bold">

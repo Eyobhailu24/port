@@ -11,14 +11,12 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Reveal } from '@/app/components/motion/Reveal';
-import { AmbientGlow } from '@/app/components/motion/AmbientGlow';
 import { SectionHeading } from '@/app/components/motion/SectionHeading';
 import { staggerDelay } from '@/lib/utils';
 
 export function Projects() {
   return (
     <section id="projects" className="relative px-6 py-24 md:py-32">
-      <AmbientGlow variant="subtle" className="-z-10" />
       <SectionHeading
         eyebrow="Featured Projects"
         title="Selected work."
