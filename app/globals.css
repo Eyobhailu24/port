@@ -255,9 +255,37 @@
   animation: drawer-depart 220ms ease-in both;
 }
 
-.intro-screen,
-.intro-overlay {
-  animation: intro-arrive 180ms ease-out both;
+/* The cover is opaque from the server's first frame, before hydration. */
+.intro-screen {
+  min-height: 100svh;
+}
+
+.intro-glow {
+  animation: intro-glow 1800ms ease-out both;
+}
+
+.intro-emblem {
+  width: min(64vw, 36svh, 20rem);
+  height: min(64vw, 36svh, 20rem);
+}
+
+.intro-orbits {
+  animation: intro-orbits 16s linear infinite;
+}
+
+.intro-orbit {
+  stroke-dasharray: 1;
+  animation: intro-draw 1500ms ease-out both;
+}
+
+.intro-monogram {
+  font-size: clamp(3rem, 10svh, 6rem);
+  line-height: 1;
+  animation: intro-monogram 650ms ease-out both;
+}
+
+.intro-loading-bar {
+  animation: intro-loading 1400ms ease-in-out infinite;
 }
 
 .intro-screen[data-state='closed'],
@@ -276,9 +304,29 @@
   to { opacity: 0; transform: translateX(calc(100% + 1rem)); }
 }
 
-@keyframes intro-arrive {
-  from { opacity: 0; }
-  to { opacity: 1; }
+@keyframes intro-glow {
+  from { opacity: 0.3; transform: scale(0.6); }
+  to { opacity: 1; transform: scale(1.4); }
+}
+
+@keyframes intro-orbits {
+  from { transform: rotate(-20deg); }
+  to { transform: rotate(340deg); }
+}
+
+@keyframes intro-draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes intro-monogram {
+  from { opacity: 0; transform: translateY(12px); filter: blur(8px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@keyframes intro-loading {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
 }
 
 @keyframes intro-depart {
@@ -364,6 +412,14 @@
 
   .marquee-viewport {
     mask-image: none;
+  }
+
+  .intro-glow,
+  .intro-orbits,
+  .intro-orbit,
+  .intro-monogram,
+  .intro-loading-bar {
+    animation: none;
   }
 
   .marquee-group[aria-hidden='true'] {

@@ -2,55 +2,72 @@
 
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 import { Dialog } from 'radix-ui';
-import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import { profile } from '@/lib/content';
 import { Button } from '@/components/ui/button';
 
 const IntroContext = createContext(true);
-const SESSION_KEY = 'eyob-portfolio-intro-v1';
+const MINIMUM_INTRO_MS = 1800;
+const MAXIMUM_LOAD_MS = 12000;
 
 export function usePortfolioReady() {
   return useContext(IntroContext);
 }
 
 export function PortfolioIntro({ children }: { children: ReactNode }) {
-  const [open, setOpen] = useState(false);
-  const checked = useRef(false);
+  // Render the splash in the initial HTML, including on reloads and anchor links.
+  const [open, setOpen] = useState(true);
   const skip = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    if (checked.current) return;
-    checked.current = true;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.location.hash || window.scrollY > 64) return;
-    try {
-      if (window.sessionStorage.getItem(SESSION_KEY)) return;
-      window.sessionStorage.setItem(SESSION_KEY, 'seen');
-    } catch {
-      // Storage restrictions should never prevent access to the portfolio.
-      return;
-    }
-    setOpen(true);
-  }, []);
-
-  useEffect(() => {
     if (!open) return;
-    // Dismiss independently of animation events, even if an animation fails.
-    const timer = window.setTimeout(() => setOpen(false), 1800);
-    const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const reduce = () => { if (preference.matches) setOpen(false); };
-    preference.addEventListener('change', reduce);
+
+    let cancelled = false;
+    const controller = new AbortController();
+    const pageLoaded = new Promise<void>((resolve) => {
+      if (document.readyState === 'complete') resolve();
+      else window.addEventListener('load', () => resolve(), { once: true, signal: controller.signal });
+    });
+    let minimumTimer: number;
+    const minimumDisplay = new Promise<void>((resolve) => {
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      minimumTimer = window.setTimeout(resolve, reducedMotion ? 250 : MINIMUM_INTRO_MS);
+    });
+
+    const reveal = () => { if (!cancelled) setOpen(false); };
+
+    // A failed or stalled asset must never leave the visitor behind the loader.
+    const fallbackTimer = window.setTimeout(reveal, MAXIMUM_LOAD_MS);
+    void Promise.all([pageLoaded, document.fonts.ready, minimumDisplay]).then(async () => {
+      if (cancelled) return;
+      // Decode eager images and images in the initial viewport. Offscreen lazy
+      // images keep loading on demand, so they cannot hold up the entry screen.
+      const images = Array.from(document.images).filter((image) => {
+        const bounds = image.getBoundingClientRect();
+        return image.loading !== 'lazy' || (bounds.bottom > 0 && bounds.top < window.innerHeight);
+      });
+      await Promise.all(images.map((image) => image.decode().catch(() => undefined)));
+      reveal();
+    }).catch(reveal);
+
     return () => {
-      window.clearTimeout(timer);
-      preference.removeEventListener('change', reduce);
+      cancelled = true;
+      controller.abort();
+      window.clearTimeout(minimumTimer);
+      window.clearTimeout(fallbackTimer);
     };
   }, [open]);
 
   return (
     <IntroContext.Provider value={!open}>
-      {children}
+      <noscript>
+        <style>{`
+          .intro-screen, .intro-overlay { display: none !important; }
+          [data-intro-reveal] { opacity: 1 !important; transform: none !important; filter: none !important; }
+        `}</style>
+      </noscript>
       <Dialog.Root open={open} onOpenChange={setOpen}>
-        <Dialog.Portal>
+        {/* Keep this inline: portals do not include their contents in server HTML. */}
           <Dialog.Overlay className="intro-overlay fixed inset-0 z-[190] bg-background" />
           <Dialog.Content
             className="intro-screen fixed inset-0 z-[200] flex flex-col items-center justify-center overflow-hidden bg-background px-6 text-foreground outline-none"
@@ -61,41 +78,46 @@ export function PortfolioIntro({ children }: { children: ReactNode }) {
               document.getElementById('hero-heading')?.focus({ preventScroll: true });
             }}
           >
-            <motion.div aria-hidden className="pointer-events-none absolute size-[min(80vw,36rem)] rounded-full bg-primary/10 blur-[90px]" initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1.4, opacity: 1 }} transition={{ duration: 1.6 }} />
+            <div aria-hidden className="intro-glow pointer-events-none absolute size-[min(80vw,36rem)] rounded-full bg-primary/10 blur-[90px]" />
             <div aria-hidden className="pointer-events-none absolute inset-x-8 top-8 flex items-center justify-between font-mono text-[10px] tracking-[0.25em] text-muted-foreground sm:inset-x-12 sm:top-12">
               <span>EYOB HAILU <span className="text-brand">/</span> PORTFOLIO</span>
               <span className="hidden sm:block">DESIGN · CODE · BUILD</span>
             </div>
-            <div className="relative flex size-64 items-center justify-center sm:size-80">
-              <motion.svg aria-hidden viewBox="0 0 320 320" className="absolute inset-0 size-full overflow-visible text-primary" fill="none" initial={{ rotate: -20 }} animate={{ rotate: 0 }} transition={{ duration: 1.7, ease: 'easeOut' }}>
-                <motion.circle cx="160" cy="160" r="137" stroke="currentColor" strokeWidth="0.8" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 0.35 }} transition={{ duration: 1.25 }} />
-                <motion.ellipse cx="160" cy="160" rx="153" ry="62" transform="rotate(-35 160 160)" stroke="currentColor" strokeWidth="1.2" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 0.75 }} transition={{ duration: 1.2, delay: 0.15 }} />
-                <motion.ellipse cx="160" cy="160" rx="64" ry="137" transform="rotate(-35 160 160)" stroke="currentColor" strokeWidth="0.7" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 0.25 }} transition={{ duration: 1.25, delay: 0.25 }} />
-                <motion.circle cx="272" cy="78" r="4" fill="currentColor" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.9, type: 'spring' }} />
-              </motion.svg>
-              <motion.div aria-hidden className="relative font-mono text-7xl font-semibold tracking-tighter sm:text-8xl" initial={{ opacity: 0, y: 12, filter: 'blur(8px)' }} animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }} transition={{ duration: 0.65, delay: 0.1 }}>
+            <div className="intro-emblem relative flex shrink-0 items-center justify-center">
+              <svg aria-hidden viewBox="0 0 320 320" className="intro-orbits absolute inset-0 size-full overflow-visible text-primary" fill="none">
+                <circle className="intro-orbit" pathLength="1" cx="160" cy="160" r="137" stroke="currentColor" strokeWidth="0.8" opacity="0.35" />
+                <ellipse className="intro-orbit" pathLength="1" cx="160" cy="160" rx="153" ry="62" transform="rotate(-35 160 160)" stroke="currentColor" strokeWidth="1.2" opacity="0.75" />
+                <ellipse className="intro-orbit" pathLength="1" cx="160" cy="160" rx="64" ry="137" transform="rotate(-35 160 160)" stroke="currentColor" strokeWidth="0.7" opacity="0.25" />
+                <circle cx="272" cy="78" r="4" fill="currentColor" />
+              </svg>
+              <div aria-hidden className="intro-monogram relative font-mono font-semibold tracking-tighter">
                 EH<span className="text-brand">_</span>
-              </motion.div>
+              </div>
             </div>
             <Dialog.Title asChild>
-              <motion.h2 className="relative mt-7 text-3xl font-semibold tracking-tight sm:text-4xl" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, delay: 0.4 }}>
+              <h2 className="relative mt-7 text-3xl font-semibold tracking-tight sm:text-4xl">
                 {profile.name}
-              </motion.h2>
+              </h2>
             </Dialog.Title>
             <Dialog.Description asChild>
-              <motion.p className="relative mt-3 font-mono text-[11px] tracking-[0.25em] text-muted-foreground uppercase sm:text-xs" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.65, duration: 0.4 }}>
+              <p className="relative mt-3 font-mono text-[11px] tracking-[0.25em] text-muted-foreground uppercase sm:text-xs">
                 {profile.role}
-              </motion.p>
+              </p>
             </Dialog.Description>
-            <motion.div aria-hidden className="relative mt-8 h-px w-24 origin-left bg-primary/60" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.8, delay: 0.65 }} />
+            <div aria-hidden className="relative mt-8 h-px w-32 overflow-hidden bg-primary/15">
+              <div className="intro-loading-bar absolute inset-0 bg-primary/80" />
+            </div>
+            <p role="status" className="relative mt-4 font-mono text-[10px] tracking-[0.2em] text-muted-foreground uppercase">
+              Loading portfolio
+            </p>
             <Dialog.Close asChild>
               <Button ref={skip} variant="ghost" className="absolute right-6 bottom-8 h-10 gap-2 rounded-full px-4 sm:right-12 sm:bottom-12">
-                Skip intro <ArrowUpRight aria-hidden className="size-3.5" />
+                Enter portfolio <ArrowUpRight aria-hidden className="size-3.5" />
               </Button>
             </Dialog.Close>
           </Dialog.Content>
-        </Dialog.Portal>
       </Dialog.Root>
+      {children}
     </IntroContext.Provider>
   );
 }

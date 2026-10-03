@@ -40,6 +40,7 @@ const word: Variants = {
 };
 
 const fadeUp = (delay: number, ready: boolean, reduceMotion: boolean | null) => ({
+  'data-intro-reveal': '',
   initial: false as const,
   animate: ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 },
   transition: { duration: reduceMotion ? 0 : 0.5, delay: ready && !reduceMotion ? delay : 0 },
@@ -56,6 +57,7 @@ function Headline({ text }: { text: string }) {
     >
       {text.split(' ').map((w, i) => (
         <motion.span
+          data-intro-reveal
           key={i}
           variants={reduceMotion ? { hidden: { opacity: 1, y: 0, filter: 'none' }, visible: { opacity: 1, y: 0, filter: 'none' } } : word}
           className="inline-block"
@@ -250,6 +252,7 @@ export function Hero() {
 
         {/* Code window column */}
         <motion.div
+          data-intro-reveal
           initial={false}
           animate={ready ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.96 }}
           transition={{
