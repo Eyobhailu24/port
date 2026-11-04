@@ -10,7 +10,7 @@ import { usePortfolioReady } from '@/app/components/motion/PortfolioIntro';
 const socials = [
   { name: 'GitHub', href: profile.github, icon: FaGithub },
   {
-    name: 'LinkedIn',
+    name:'LinkedIn',
     href: profile.linkedin,
     icon: FaLinkedin,
   },
