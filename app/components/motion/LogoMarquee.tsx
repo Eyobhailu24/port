@@ -134,7 +134,7 @@ export function LogoMarquee({ label, items, duration = 40 }: LogoMarqueeProps) {
         tabIndex={0}
         role="group"
         aria-label={`${label}. Swipe, drag, or use the left and right arrow keys to scroll.`}
-        data-lenis-prevent
+        data-lenis-prevent-horizontal
       >
         <div className="marquee-track">
           {[0, 1, 2].map((copy) => (

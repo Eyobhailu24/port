@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "lenis/dist/lenis.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -200,6 +201,11 @@
   .text-brand {
     @apply text-sky-700 dark:text-sky-400;
   }
+}
+
+/* Lenis handles the animation; browser smooth scrolling is the fallback. */
+html.lenis {
+  scroll-behavior: auto;
 }
 
 .navbar-shell {
